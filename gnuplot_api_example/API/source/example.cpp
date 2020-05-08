@@ -3,6 +3,7 @@
 
 #include "Wektor.hh"
 #include "Macierz.hh"
+#include "MacierzRot.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -24,7 +25,9 @@ int main() {
   Macierz <double,3> M;
   std::cin>>M;
   std::cout<<M;
-  
+  MacierzRot MR(5);
+  std::cin>>MR;
+  std::cout<<MR;
   exit(1);
 
   
