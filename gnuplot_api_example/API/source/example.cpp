@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Dr3D_gnuplot_api.hh"
 
+#include "Wektor.hh"
+#include "Macierz.hh"
+
 using std::vector;
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
@@ -14,6 +17,17 @@ void wait4key() {
 }
 
 int main() {
+  std::cout<<"Halo"<<endl;
+  Wektor <double,3> W;
+  std::cin>>W;
+  std::cout<<W;
+  Macierz <double,3> M;
+  std::cin>>M;
+  std::cout<<M;
+  
+  exit(1);
+
+  
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000)); //włacza gnuplota, pojawia się scena [-5,5] x [-5,5] x [-5,5] odświeżana co 1000 ms
   //drawNS::Draw3DAPI * api = new APIGnuPlot3D(-5,5,-5,5,-5,5,1000); //alternatywnie zwykły wskaźnik
   api->change_ref_time_ms(0); //odświeżanie sceny zmienione na opcję "z każdym pojawieniem się lub zniknięciem kształtu"
