@@ -27,14 +27,61 @@ int main() {
   //std::cin>>M;
   //std::cout<<M;
   
-  MacierzRot MR(30,'x');
+  //MacierzRot MR(30,'x');
   //std::cin>>MR;
-  Prostopadloscian Dron(1,2,3);
-  std::cout<<MR;
+  Prostopadloscian Dron(3,2,1);
+  //std::cout<<MR;
+  
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
   api->change_ref_time_ms(0);
   int d=Dron.rysuj(api);
+
+  cout<<"q-zakoncz"<<endl;
+  cout<<"p-przesun"<<endl;
+  cout<<"o-obroc"<<endl;
   
+  char wybor;
+  while(wybor!='q')
+    {
+      wybor='a';
+      std::cin>>wybor;
+      switch(wybor)
+	{
+	case 'q':
+	  {
+	    std::cout<<"Koniec"<<std::endl;
+	    exit(1);
+	  }
+	case 'p':
+	  {
+	    std::cout<<"przesuniecie. Podaj wektor: "<<std::endl;
+	    api->erase_shape(d);
+	    Wektor <double,3> W;
+	    std::cin>>W;
+	    Dron.przesun(W);
+	    wait4key();
+	    d=Dron.rysuj(api);
+	    break;
+	  }
+	case 'o':
+	  {
+	    std::cout<<"obrot. Podaj stopnie i os: "<<std::endl;
+	    api->erase_shape(d);
+	    double stopnie;
+	    char os;
+	    std::cin>>stopnie;
+	    std::cin>>os;
+	    MacierzRot R(stopnie,os);
+	    Dron.obroc(R);
+	    wait4key();
+	    d=Dron.rysuj(api);
+	    break;
+	  }
+	default: std::cout<<"Nieznana opcja"<<std::endl;
+	}
+      
+    }
+  /*
   wait4key();
   api->erase_shape(d);
   Wektor <double,3> W;
@@ -49,10 +96,8 @@ int main() {
   Dron.obroc(R);
   d=Dron.rysuj(api);
 
-
-  
   exit(1);
-
+  */
   
 
   
