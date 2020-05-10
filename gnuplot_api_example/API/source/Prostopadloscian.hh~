@@ -1,0 +1,27 @@
+#ifndef PROSTOPADLOSCIAN_HH
+#define PROSTOPADLOSCIAN_HH
+
+#include <iostream>
+#include "Wektor.hh"
+#include "Macierz.hh"
+#include "MacierzRot.hh"
+
+class Prostopadloscian
+{
+  Wektor<TYP,ROZMIAR> srodek;
+  Wektor<TYP,ROZMIAR> v1;
+  Wektor<TYP,ROZMIAR> v2;
+  Wektor<TYP,ROZMIAR> v3;
+  Wektor<TYP,ROZMIAR> v4;
+  Wektor<TYP,ROZMIAR> v5;
+  Wektor<TYP,ROZMIAR> v6;
+  Wektor<TYP,ROZMIAR> v7;
+  Wektor<TYP,ROZMIAR> v8;
+  MacierzRot<TYP,ROZMIAR> polozenie;
+public:
+  
+
+  
+}
+
+#endif

@@ -4,6 +4,7 @@
 #include "Wektor.hh"
 #include "Macierz.hh"
 #include "MacierzRot.hh"
+#include "Prostopadloscian.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -19,19 +20,43 @@ void wait4key() {
 
 int main() {
   std::cout<<"Halo"<<endl;
-  Wektor <double,3> W;
-  std::cin>>W;
-  std::cout<<W;
-  Macierz <double,3> M;
-  std::cin>>M;
-  std::cout<<M;
-  MacierzRot MR(5);
-  std::cin>>MR;
+  // Wektor <double,3> W;
+  // std::cin>>W;
+  // std::cout<<W;
+  //Macierz <double,3> M;
+  //std::cin>>M;
+  //std::cout<<M;
+  
+  MacierzRot MR(30,'x');
+  //std::cin>>MR;
+  Prostopadloscian Dron(1,2,3);
   std::cout<<MR;
+  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
+  api->change_ref_time_ms(0);
+  int d=Dron.rysuj(api);
+  
+  wait4key();
+  api->erase_shape(d);
+  Wektor <double,3> W;
+  W[0]=2; W[1]=3; W[2]=1;
+
+  Dron.przesun(W);
+  d=Dron.rysuj(api);
+
+  wait4key();
+  api->erase_shape(d);
+  MacierzRot R(45,'x');
+  Dron.obroc(R);
+  d=Dron.rysuj(api);
+
+
+  
   exit(1);
 
   
-  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000)); //włacza gnuplota, pojawia się scena [-5,5] x [-5,5] x [-5,5] odświeżana co 1000 ms
+
+  
+  //std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000)); //włacza gnuplota, pojawia się scena [-5,5] x [-5,5] x [-5,5] odświeżana co 1000 ms
   //drawNS::Draw3DAPI * api = new APIGnuPlot3D(-5,5,-5,5,-5,5,1000); //alternatywnie zwykły wskaźnik
   api->change_ref_time_ms(0); //odświeżanie sceny zmienione na opcję "z każdym pojawieniem się lub zniknięciem kształtu"
   int a=api->draw_line(drawNS::Point3D(0,0,0),drawNS::Point3D(2,0,0)); //rysuje linię pomiędzy (0,0,0) a (2,0,0), zapamiętuje id kształtu w zmiennej a 

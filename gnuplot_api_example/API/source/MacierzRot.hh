@@ -9,24 +9,10 @@ class MacierzRot :public Macierz<double,3>
 {
 
 public:
-  MacierzRot() = delete;
-  
-  MacierzRot(int a)
-  {
-    for(int i=0;i<3;++i)
-      {
-	for(int j=0;j<3;++j)
-	  {//this[i][j]=a;
-	   std::cout<<"LIczba"<<a;
-	  }
-      }
-  }
-
-  
+  MacierzRot();
+  MacierzRot(double a,char os);
+  MacierzRot operator = (Macierz<double,3> M); 
 };
-
-
-
 
 
 
