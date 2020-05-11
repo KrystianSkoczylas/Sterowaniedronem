@@ -3,13 +3,13 @@ CPPFLAGS= -c -g -Wall -pedantic -std=c++17
 __start__: example.out
 	./example.out
 
-example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o
-	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o  -lpthread
+example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o
+	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o  -lpthread
 
 #example.out: Dr3D_gnuplot_api.o example.o
 #	g++ -o example.out example.o Dr3D_gnuplot_api.o -lpthread
 
-example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh
+example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh
 	g++ ${CPPFLAGS} -o example.o example.cpp
 
 #example.o: example.cpp Dr3D_gnuplot_api.hh 
@@ -20,6 +20,9 @@ Dr3D_gnuplot_api.o: Dr3D_gnuplot_api.cpp Dr3D_gnuplot_api.hh
 
 Dr3D_gnuplot_api.hh: Draw3D_api_interface.hh
 	touch Dr3D_gnuplot_api.hh
+
+Dron.o: Dron.cpp  Dron.hh
+	g++ ${CPPFLAGS} -o Dron.o Dron.cpp
 
 GraniastoslupSzesc.o: GraniastoslupSzesc.cpp GraniastoslupSzesc.hh Dr3D_gnuplot_api.hh
 	g++ ${CPPFLAGS} -o GraniastoslupSzesc.o GraniastoslupSzesc.cpp
@@ -37,4 +40,4 @@ Wektor.o: Wektor.cpp SWektor.cpp Wektor.hh
 	g++ ${CPPFLAGS} -o Wektor.o SWektor.cpp
 
 clear:
-	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o
+	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o

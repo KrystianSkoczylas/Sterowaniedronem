@@ -6,6 +6,7 @@
 #include "MacierzRot.hh"
 #include "Prostopadloscian.hh"
 #include "GraniastoslupSzesc.hh"
+#include "Dron.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -82,6 +83,7 @@ int main() {
 	}
       
 	}*/
+  
   GraniastoslupSzesc G(3,4);
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
   api->change_ref_time_ms(0);
@@ -131,7 +133,14 @@ int main() {
 	default: std::cout<<"Nieznana opcja"<<std::endl;
 	}
       
-    }
+	}
+
+  //Dron D(3.0,4.0,1.0); ????
+  //std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
+  //api->change_ref_time_ms(0);
+  //int d=D.rysuj(api);
+  
+  exit(1);
   /*
   wait4key();
   api->erase_shape(d);
