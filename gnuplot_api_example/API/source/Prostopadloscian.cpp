@@ -50,6 +50,14 @@ void Prostopadloscian::obroc (MacierzRot obrocenie)
 
 int Prostopadloscian::rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const
 { int a;
+  /* g1=srodek+polozenie*this->v1;
+  g2=srodek+polozenie*this->v2;
+  g3=srodek+polozenie*this->v3;
+  g4=srodek+polozenie*this->v4;
+  g5=srodek+polozenie*this->v5;
+  g6=srodek+polozenie*this->v6;
+  g7=srodek+polozenie*this->v7;
+  g8=srodek+polozenie*this->v8;*/
  a=api->draw_polyhedron(vector<vector<Point3D> > {{
        drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2])
       },{

@@ -5,6 +5,7 @@
 #include "Macierz.hh"
 #include "MacierzRot.hh"
 #include "Prostopadloscian.hh"
+#include "GraniastoslupSzesc.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -29,8 +30,8 @@ int main() {
   
   //MacierzRot MR(30,'x');
   //std::cin>>MR;
-  Prostopadloscian Dron(3,2,1);
   //std::cout<<MR;
+  /* Prostopadloscian Dron(3,2,1);
   
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
   api->change_ref_time_ms(0);
@@ -75,6 +76,56 @@ int main() {
 	    Dron.obroc(R);
 	    wait4key();
 	    d=Dron.rysuj(api);
+	    break;
+	  }
+	default: std::cout<<"Nieznana opcja"<<std::endl;
+	}
+      
+	}*/
+  GraniastoslupSzesc G(3,4);
+  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
+  api->change_ref_time_ms(0);
+  int g=G.rysuj(api);
+
+  cout<<"q-zakoncz"<<endl;
+  cout<<"p-przesun"<<endl;
+  cout<<"o-obroc"<<endl;
+  
+  char wybor;
+  while(wybor!='q')
+    {
+      wybor='a';
+      std::cin>>wybor;
+      switch(wybor)
+	{
+	case 'q':
+	  {
+	    std::cout<<"Koniec"<<std::endl;
+	    exit(1);
+	  }
+	case 'p':
+	  {
+	    std::cout<<"przesuniecie. Podaj wektor: "<<std::endl;
+	    api->erase_shape(g);
+	    Wektor <double,3> W;
+	    std::cin>>W;
+	    G.przesun(W);
+	    wait4key();
+	    g=G.rysuj(api);
+	    break;
+	  }
+	case 'o':
+	  {
+	    std::cout<<"obrot. Podaj stopnie i os: "<<std::endl;
+	    api->erase_shape(g);
+	    double stopnie;
+	    char os;
+	    std::cin>>stopnie;
+	    std::cin>>os;
+	    MacierzRot R(stopnie,os);
+	    G.obroc(R);
+	    wait4key();
+	    g=G.rysuj(api);
 	    break;
 	  }
 	default: std::cout<<"Nieznana opcja"<<std::endl;
