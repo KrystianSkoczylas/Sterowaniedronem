@@ -2,6 +2,7 @@
 
 Dron::Dron (double a, double b, double c)
 {
+  indeks =0;
   v1[0]=-a/2; v1[1]=b/2; v1[2]=-c/2;
   v2[0]=a/2; v2[1]=b/2; v2[2]=-c/2;
   v3[0]=a/2; v3[1]=-b/2; v3[2]=-c/2;
@@ -20,7 +21,11 @@ Dron::Dron (double a, double b, double c)
   g8=v8;
   L.ustaw_srube(a/2,a/2);
   P.ustaw_srube(a/2,a/2);
-  
+  ustaw_bazowe_polozenie_orientacje_srub();
+  L.zmien_orientacje(Bazowa_orientacja_srub);
+  P.zmien_orientacje(Bazowa_orientacja_srub);
+  L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
+  P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
 }
 
 void Dron::obrot (double stopnie)
@@ -29,8 +34,8 @@ void Dron::obrot (double stopnie)
     { 
       MacierzRot R(1,'z');
       obroc(R);
-      //lewa_sruba.zmien_orientacje(polozenie * bazowa_orientacja+sruby)
-      //praw_sruba.zmien_orientacje(polozenie * bazowa_orientacja+sruby)
+      L.zmien_orientacje(polozenie * Bazowa_orientacja_srub);
+      P.zmien_orientacje(polozenie * Bazowa_orientacja_srub);
       rysuj();
     }
   
@@ -48,8 +53,8 @@ void Dron::plyn (double stopnie, double odleglosc)
   for(double i=0;i<dlugosc_wektora;++i)
     { 
       przesun(W);
-      //lewa_sruba.zmien_srodek(srodek + polozenie * bazowa_przesuniecieL)
-      //prawa_sruba.zmien_srodek(srodek + polozenie * bazowa_przesuniecieP)
+      L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
+      P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
       rysuj();
       
       //std::cout<<i;
@@ -64,12 +69,12 @@ void Dron::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
 }
 
 void Dron::rysuj() {
-  if(indeks != 0)
+  //  if(indeks != 0)
      api->erase_shape(indeks);
   Prostopadloscian::rysuj();
-  //lewa_sruba.rysuj()
-  //prawa_sruba.rysuj()
-}
+  L.rysuj();
+  P.rysuj();
+ }
 
 /*
 j = uklad_bazowy
@@ -77,6 +82,7 @@ i - uklad_lokalny
 A_ij(p) = sr + orint * p
 A_ij(A_jk(p)) = sr_ij + orient_ij * (sr_jk + orient_jk * p)
 A_ik(p) = sr_ij + orient_ij * sr_jk + orient_ij * orient_jk * p 
+
 sr_ik = sr_ij + orient_ij * sr_jk
 orient_ik = orient_ij * orient_jk
 
@@ -89,6 +95,15 @@ void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
 {
   MacierzRot R(90,'y');
   Bazowa_orientacja_srub=R;
-  Bazowe_polozenie_srubyL[0]=-5; Bazowe_polozenie_srubyL[0]=-2; Bazowe_polozenie_srubyL[0]=0; 
-  Bazowe_polozenie_srubyP[0]=-5; Bazowe_polozenie_srubyP[0]=-2;  Bazowe_polozenie_srubyP[0]=0;
+  Bazowe_polozenie_srubyL[0]=-5; Bazowe_polozenie_srubyL[1]=20; Bazowe_polozenie_srubyL[2]=0; 
+  Bazowe_polozenie_srubyP[0]=-5; Bazowe_polozenie_srubyP[1]=-20;  Bazowe_polozenie_srubyP[2]=0;
 }
+
+
+/*
+int Dron::wez_indeks() const 
+{
+  return indeks;
+}
+
+*/

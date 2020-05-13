@@ -40,6 +40,23 @@ MacierzRot::MacierzRot()
   (*this)[2][0]=0; (*this)[2][1]=0; (*this)[2][2]=1;
 }
 
+MacierzRot::MacierzRot (Macierz<double,3> M) : Macierz<double,3>(M) {
+  if(M.Wyznacznik()<0.999999 && M.Wyznacznik()>1.00000001)
+    { std::cout<<"Wyznaczik rozny od 1"; exit(1);}
+  if(M[0]*M[1]<-0.000000001 && M[0]*M[1]>0.00000001)
+    { std::cout<<"Iloczyn skalarny rozny od 0"; exit(1);}
+  if(M[1]*M[2]<-0.000000001 && M[0]*M[1]>0.00000001)
+    { std::cout<<"Iloczyn skalarny rozny od 0"; exit(1);}
+  if(M[0]*M[2]<-0.000000001 && M[0]*M[1]>0.00000001)
+    { std::cout<<"Iloczyn skalarny rozny od 0"; exit(1);}
+
+  for(int i=0;i<3;++i)
+    {
+      (*this)[i]=M[i];
+    }
+}
+  
+
 MacierzRot MacierzRot::operator = (Macierz<double,3> M)
 {
   if(M.Wyznacznik()<0.999999 && M.Wyznacznik()>1.00000001)

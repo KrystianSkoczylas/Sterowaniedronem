@@ -6,6 +6,7 @@
 
 template <class TYP, int ROZMIAR>
 class Macierz {
+protected:
   Wektor<TYP,ROZMIAR> tab[ROZMIAR];
   TYP wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wylaczone_kolumny[ROZMIAR]) const;
   int sumujTrue(bool array[ROZMIAR]) const;

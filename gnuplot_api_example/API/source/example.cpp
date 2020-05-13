@@ -145,25 +145,22 @@ int main() {
   Dron D(30.0,20.0,15.0);
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,1000));
   D.ustawwskaznik(api);
-  //D.L.ustawwskaznik(api);
-  //D.P.ustawwskaznik(api);
-  
+ 
   api->change_ref_time_ms(0);
+
+  wait4key();
   D.rysuj();
-  //D.L.rysuj();
-  
   wait4key();
   //D.obrot(360);
   Wektor<double,3> pr;
   pr[0]=30;
-  D.przesun(pr);
-  D.rysuj();
+  //D.przesun(pr);
   wait4key();
-  //D.plyn(45,50);
-  D.przesun(pr);
-  D.rysuj();
-   wait4key();   
-   exit(1); 
+  D.plyn(45,500);
+  // D.przesun(pr);
+  //D.rysuj();
+  wait4key();   
+  exit(1); 
 
   /* Sruba S(10,7);
    std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));

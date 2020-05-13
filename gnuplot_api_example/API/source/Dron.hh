@@ -23,6 +23,9 @@ public:
   void rysuj();
 
   void ustaw_bazowe_polozenie_orientacje_srub ();
+
+
+  //  int wez_indeks() const;
   
 };
 

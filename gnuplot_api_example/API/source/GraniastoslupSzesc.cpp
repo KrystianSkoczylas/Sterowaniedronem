@@ -66,6 +66,10 @@ void GraniastoslupSzesc::obroc (MacierzRot obrocenie)
 
 void GraniastoslupSzesc::rysuj ()
 {//int a;
+
+   if(indeks != 0)
+     api->erase_shape(indeks);
+ 
    indeks=api->draw_polyhedron(vector<vector<Point3D> > {{
 	 drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2]), drawNS::Point3D(g5[0],g5[1],g5[2]), drawNS::Point3D(g6[0],g6[1],g6[2])
       },{
@@ -86,6 +90,18 @@ void GraniastoslupSzesc::zmien_srodek (Wektor<double,3> nowy_srodek)
   srodek[0]=nowy_srodek[0];
   srodek[1]=nowy_srodek[1];
   srodek[2]=nowy_srodek[2];
+ g1=srodek+polozenie*v1;
+  g2=srodek+polozenie*v2;
+  g3=srodek+polozenie*v3;
+  g4=srodek+polozenie*v4;
+  g5=srodek+polozenie*v5;
+  g6=srodek+polozenie*v6;
+  g7=srodek+polozenie*v7;
+  g8=srodek+polozenie*v8;
+  g9=srodek+polozenie*v9;
+  g10=srodek+polozenie*v10;
+  g11=srodek+polozenie*v11;
+  g12=srodek+polozenie*v12;
 }
 
 void GraniastoslupSzesc::zmien_orientacje (MacierzRot nowy_obrot)
@@ -93,4 +109,16 @@ void GraniastoslupSzesc::zmien_orientacje (MacierzRot nowy_obrot)
   polozenie[0][0]=nowy_obrot[0][0];  polozenie[0][1]=nowy_obrot[0][1];  polozenie[0][2]=nowy_obrot[0][2];
   polozenie[1][0]=nowy_obrot[1][0];  polozenie[1][1]=nowy_obrot[1][1];  polozenie[1][2]=nowy_obrot[1][2];
   polozenie[2][0]=nowy_obrot[2][0];  polozenie[2][1]=nowy_obrot[2][1];  polozenie[2][2]=nowy_obrot[2][2];
+  g1=srodek+polozenie*v1;
+  g2=srodek+polozenie*v2;
+  g3=srodek+polozenie*v3;
+  g4=srodek+polozenie*v4;
+  g5=srodek+polozenie*v5;
+  g6=srodek+polozenie*v6;
+  g7=srodek+polozenie*v7;
+  g8=srodek+polozenie*v8;
+  g9=srodek+polozenie*v9;
+  g10=srodek+polozenie*v10;
+  g11=srodek+polozenie*v11;
+  g12=srodek+polozenie*v12;
 }
