@@ -24,7 +24,8 @@ public:
     }
     return tab[ind];
   };
-  
+
+  TYP dlugosc() const;
   TYP operator * (const Wektor<TYP,ROZMIAR> & W2) const;//OK iloczyn skalarny
   Wektor<TYP,ROZMIAR> operator * (TYP skalar) const; // W * 2 OK
   Wektor<TYP,ROZMIAR>  operator + (const Wektor<TYP,ROZMIAR> & W2) const;//OK bez & bez const

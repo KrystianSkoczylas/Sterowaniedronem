@@ -48,8 +48,8 @@ void Prostopadloscian::obroc (MacierzRot obrocenie)
   
 }
 
-int Prostopadloscian::rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const
-{ int a;
+void Prostopadloscian::rysuj ()
+{ //int a;
   /* g1=srodek+polozenie*this->v1;
   g2=srodek+polozenie*this->v2;
   g3=srodek+polozenie*this->v3;
@@ -58,10 +58,15 @@ int Prostopadloscian::rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const
   g6=srodek+polozenie*this->v6;
   g7=srodek+polozenie*this->v7;
   g8=srodek+polozenie*this->v8;*/
- a=api->draw_polyhedron(vector<vector<Point3D> > {{
+ indeks=api->draw_polyhedron(vector<vector<Point3D> > {{
        drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2])
       },{
        drawNS::Point3D(g5[0],g5[1],g5[2]), drawNS::Point3D(g6[0],g6[1],g6[2]), drawNS::Point3D(g7[0],g7[1],g7[2]), drawNS::Point3D(g8[0],g8[1],g8[2])	
 	  }},"blue");
- return a;
+ //return a;
+}
+
+void Prostopadloscian::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
+{
+  api=wskaznik;
 }

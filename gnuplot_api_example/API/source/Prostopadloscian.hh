@@ -16,6 +16,8 @@ using std::endl;
 class Prostopadloscian
 {
 protected:
+  std::shared_ptr<drawNS::Draw3DAPI> api;
+  int indeks;
   Wektor<double,3> srodek;
   Wektor<double,3> v1;
   Wektor<double,3> v2;
@@ -36,12 +38,13 @@ protected:
   MacierzRot polozenie;
 public:
   Prostopadloscian (double a, double b, double c);
-
+  Prostopadloscian () {}
   
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);
-  int rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const;
-
+  // int rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const;
+  void rysuj ();
+  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);
 
   
 };

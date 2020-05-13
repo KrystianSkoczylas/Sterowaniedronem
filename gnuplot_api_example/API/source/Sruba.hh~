@@ -1,0 +1,15 @@
+#ifndef SRUBA_HH
+#define SRUBA_HH
+
+#include <iostream>
+#include "GraniastoslupSzesc.hh"
+
+class Sruba :public GraniastoslupSzesc
+{
+
+public:
+  Sruba(double a, double b);
+  void przesun (Wektor<double,3> W);
+};
+
+#endif

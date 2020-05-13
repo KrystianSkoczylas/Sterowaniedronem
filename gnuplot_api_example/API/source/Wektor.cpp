@@ -88,5 +88,14 @@ Wektor<TYP,ROZMIAR>  Wektor<TYP,ROZMIAR>::operator - (const Wektor<TYP,ROZMIAR> 
   return wyn;
 }
 
-
-
+template <class TYP, int ROZMIAR>
+TYP Wektor<TYP,ROZMIAR>::dlugosc() const
+{
+  TYP wyn=0;
+  for (int i=0;i<ROZMIAR;++i)
+    {
+      wyn += tab[i] * tab[i]; 
+    }
+  return sqrt(wyn);
+  
+}

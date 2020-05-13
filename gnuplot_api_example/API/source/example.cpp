@@ -7,6 +7,7 @@
 #include "Prostopadloscian.hh"
 #include "GraniastoslupSzesc.hh"
 #include "Dron.hh"
+#include "Sruba.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -83,11 +84,11 @@ int main() {
 	}
       
 	}*/
-  
+  /*
   GraniastoslupSzesc G(3,4);
-  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
+  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-10,10,-10,10,-10,10,1000));
   api->change_ref_time_ms(0);
-  int g=G.rysuj(api);
+  G.rysuj();
 
   cout<<"q-zakoncz"<<endl;
   cout<<"p-przesun"<<endl;
@@ -108,39 +109,64 @@ int main() {
 	case 'p':
 	  {
 	    std::cout<<"przesuniecie. Podaj wektor: "<<std::endl;
-	    api->erase_shape(g);
+	    api->erase_shape(G.indeks);
 	    Wektor <double,3> W;
 	    std::cin>>W;
 	    G.przesun(W);
 	    wait4key();
-	    g=G.rysuj(api);
+	    G.rysuj();
 	    break;
 	  }
 	case 'o':
 	  {
-	    std::cout<<"obrot. Podaj stopnie i os: "<<std::endl;
-	    api->erase_shape(g);
-	    double stopnie;
+	    std::cout<<"obrot. Podaj ile razy, stopnie i os: "<<std::endl;
+	    
+	    //api->erase_shape(g);
+	    double ile,stopnie;
 	    char os;
+	    std::cin>>ile;
 	    std::cin>>stopnie;
 	    std::cin>>os;
-	    MacierzRot R(stopnie,os);
-	    G.obroc(R);
-	    wait4key();
-	    g=G.rysuj(api);
+	    for(int i=0;i<ile;++i)
+	      {
+		api->erase_shape(G.indeks);
+		MacierzRot R(stopnie,os);
+		G.obroc(R);
+		//wait4key();
+		G.rysuj(); }
 	    break;
 	  }
-	default: std::cout<<"Nieznana opcja"<<std::endl;
+	default: std::cout<<"Nieznana opcja"<<std::endl;break;
 	}
       
-	}
+	}*/ 
 
-  //Dron D(3.0,4.0,1.0); ????
-  //std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-5,5,-5,5,-5,5,1000));
-  //api->change_ref_time_ms(0);
-  //int d=D.rysuj(api);
   
-  exit(1);
+  Dron D(30.0,20.0,15.0);
+  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,1000));
+  D.ustawwskaznik(api);
+  D.L.ustawwskaznik(api);
+  D.P.ustawwskaznik(api);
+  
+  api->change_ref_time_ms(0);
+  D.rysuj();
+   D.L.rysuj();
+  
+  wait4key();
+  D.obrot(360);
+  wait4key();
+  D.plyn(45,50);
+   wait4key();   
+   exit(1); 
+
+  /* Sruba S(10,7);
+   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
+   S.ustawwskaznik(api);
+   S.rysuj();
+   wait4key();
+
+   
+   exit(1); */ 
   /*
   wait4key();
   api->erase_shape(d);
