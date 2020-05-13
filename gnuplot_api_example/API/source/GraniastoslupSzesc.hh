@@ -52,6 +52,8 @@ public:
   
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);
+  void zmien_srodek (Wektor<double,3> nowy_srodek);
+  void zmien_orientacje (MacierzRot nowy_obrot);
   //int rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const;
   void rysuj ();
   void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);

@@ -29,7 +29,8 @@ void Dron::obrot (double stopnie)
     { 
       MacierzRot R(1,'z');
       obroc(R);
-      api->erase_shape(indeks);
+      //lewa_sruba.zmien_orientacje(polozenie * bazowa_orientacja+sruby)
+      //praw_sruba.zmien_orientacje(polozenie * bazowa_orientacja+sruby)
       rysuj();
     }
   
@@ -47,11 +48,47 @@ void Dron::plyn (double stopnie, double odleglosc)
   for(double i=0;i<dlugosc_wektora;++i)
     { 
       przesun(W);
-      api->erase_shape(indeks);
+      //lewa_sruba.zmien_srodek(srodek + polozenie * bazowa_przesuniecieL)
+      //prawa_sruba.zmien_srodek(srodek + polozenie * bazowa_przesuniecieP)
       rysuj();
-      L.przesun_srube(W);
       
       //std::cout<<i;
     }
 }
 
+void Dron::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
+{
+  Prostopadloscian::ustawwskaznik(wskaznik);
+  L.ustawwskaznik(wskaznik);
+  P.ustawwskaznik(wskaznik);
+}
+
+void Dron::rysuj() {
+  if(indeks != 0)
+     api->erase_shape(indeks);
+  Prostopadloscian::rysuj();
+  //lewa_sruba.rysuj()
+  //prawa_sruba.rysuj()
+}
+
+/*
+j = uklad_bazowy
+i - uklad_lokalny
+A_ij(p) = sr + orint * p
+A_ij(A_jk(p)) = sr_ij + orient_ij * (sr_jk + orient_jk * p)
+A_ik(p) = sr_ij + orient_ij * sr_jk + orient_ij * orient_jk * p 
+sr_ik = sr_ij + orient_ij * sr_jk
+orient_ik = orient_ij * orient_jk
+
+sr_jk = (-3,-1,0)
+orient = Rot(y,pi/2)
+
+*/
+
+void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
+{
+  MacierzRot R(90,'y');
+  Bazowa_orientacja_srub=R;
+  Bazowe_polozenie_srubyL[0]=-5; Bazowe_polozenie_srubyL[0]=-2; Bazowe_polozenie_srubyL[0]=0; 
+  Bazowe_polozenie_srubyP[0]=-5; Bazowe_polozenie_srubyP[0]=-2;  Bazowe_polozenie_srubyP[0]=0;
+}

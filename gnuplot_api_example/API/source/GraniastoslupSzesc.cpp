@@ -3,6 +3,7 @@
 //#define T 0.86602540378443864
 GraniastoslupSzesc::GraniastoslupSzesc (double a, double b)
 {
+  indeks=0;
   v1[0]=-a/2;   v1[1]=a*T;    v1[2]=-b/2;
   v2[0]=a/2;    v2[1]=a*T;    v2[2]=-b/2;
   v3[0]=a;      v3[1]=0;      v3[2]=-b/2;
@@ -78,4 +79,18 @@ void GraniastoslupSzesc::rysuj ()
 void GraniastoslupSzesc::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
 {
   api=wskaznik;
+}
+
+void GraniastoslupSzesc::zmien_srodek (Wektor<double,3> nowy_srodek)
+{
+  srodek[0]=nowy_srodek[0];
+  srodek[1]=nowy_srodek[1];
+  srodek[2]=nowy_srodek[2];
+}
+
+void GraniastoslupSzesc::zmien_orientacje (MacierzRot nowy_obrot)
+{
+  polozenie[0][0]=nowy_obrot[0][0];  polozenie[0][1]=nowy_obrot[0][1];  polozenie[0][2]=nowy_obrot[0][2];
+  polozenie[1][0]=nowy_obrot[1][0];  polozenie[1][1]=nowy_obrot[1][1];  polozenie[1][2]=nowy_obrot[1][2];
+  polozenie[2][0]=nowy_obrot[2][0];  polozenie[2][1]=nowy_obrot[2][1];  polozenie[2][2]=nowy_obrot[2][2];
 }
