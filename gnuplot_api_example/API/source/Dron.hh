@@ -4,11 +4,10 @@
 #include <iostream>
 #include "Prostopadloscian.hh"
 #include "Sruba.hh"
-
+#include "Bryla.hh"
 class Dron :public Prostopadloscian
+//class Dron :public Prostopadloscian, public Bryla
 {
-  //Sruba L;
-  // Sruba P;
   MacierzRot Bazowa_orientacja_srub;
   Wektor<double,3> Bazowe_polozenie_srubyL;
   Wektor<double,3> Bazowe_polozenie_srubyP;
@@ -23,7 +22,6 @@ public:
   void rysuj();
 
   void ustaw_bazowe_polozenie_orientacje_srub ();
-
 
   //  int wez_indeks() const;
   

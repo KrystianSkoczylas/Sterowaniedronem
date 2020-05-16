@@ -42,9 +42,9 @@ void Dron::obrot (double stopnie)
       L.obroc(Krecenie);
       P.obroc(Krecenie);
       rysuj();
-    }
-  
+    }  
 }
+
 void Dron::plyn (double stopnie, double odleglosc)
 {
   Wektor<double,3> W;
@@ -74,28 +74,13 @@ void Dron::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
   P.ustawwskaznik(wskaznik);
 }
 
-void Dron::rysuj() {
-  //  if(indeks != 0)
-     api->erase_shape(indeks);
+void Dron::rysuj()
+{
+  api->erase_shape(indeks);
   Prostopadloscian::rysuj();
   L.rysuj();
   P.rysuj();
  }
-
-/*
-j = uklad_bazowy
-i - uklad_lokalny
-A_ij(p) = sr + orint * p
-A_ij(A_jk(p)) = sr_ij + orient_ij * (sr_jk + orient_jk * p)
-A_ik(p) = sr_ij + orient_ij * sr_jk + orient_ij * orient_jk * p 
-
-sr_ik = sr_ij + orient_ij * sr_jk
-orient_ik = orient_ij * orient_jk
-
-sr_jk = (-3,-1,0)
-orient = Rot(y,pi/2)
-
-*/
 
 void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
 {
@@ -105,11 +90,9 @@ void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
   Bazowe_polozenie_srubyP[0]=-20; Bazowe_polozenie_srubyP[1]=-10;  Bazowe_polozenie_srubyP[2]=0;
 }
 
-
 /*
 int Dron::wez_indeks() const 
 {
   return indeks;
 }
-
 */

@@ -56,7 +56,6 @@ MacierzRot::MacierzRot (Macierz<double,3> M) : Macierz<double,3>(M) {
     }
 }
   
-
 MacierzRot MacierzRot::operator = (Macierz<double,3> M)
 {
   if(M.Wyznacznik()<0.999999 && M.Wyznacznik()>1.00000001)

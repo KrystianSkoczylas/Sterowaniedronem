@@ -3,23 +3,20 @@ CPPFLAGS= -c -g -Wall -pedantic -std=c++17
 __start__: example.out
 	./example.out
 
-example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o
-	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o -lpthread
+example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o
+	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o -lpthread
 
-#example.out: Dr3D_gnuplot_api.o example.o
-#	g++ -o example.out example.o Dr3D_gnuplot_api.o -lpthread
-
-example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh Sruba.hh Plaszczyzna.hh Dno.hh Woda.hh
+example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh Sruba.hh Plaszczyzna.hh Dno.hh Woda.hh Bryla.hh
 	g++ ${CPPFLAGS} -o example.o example.cpp
-
-#example.o: example.cpp Dr3D_gnuplot_api.hh 
-#	g++ ${CPPFLAGS} -o example.o example.cpp
 
 Dr3D_gnuplot_api.o: Dr3D_gnuplot_api.cpp Dr3D_gnuplot_api.hh
 	g++ ${CPPFLAGS} -o Dr3D_gnuplot_api.o Dr3D_gnuplot_api.cpp
 
 Dr3D_gnuplot_api.hh: Draw3D_api_interface.hh
 	touch Dr3D_gnuplot_api.hh
+
+Bryla.o: Bryla.cpp Bryla.hh
+	g++ ${CPPFLAGS} -o Bryla.o Bryla.cpp
 
 Dno.o: Dno.cpp Dno.hh Plaszczyzna.hh
 	g++ ${CPPFLAGS} -o Dno.o Dno.cpp
@@ -52,4 +49,4 @@ Wektor.o: Wektor.cpp SWektor.cpp Wektor.hh
 	g++ ${CPPFLAGS} -o Wektor.o SWektor.cpp
 
 clear:
-	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o
+	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o

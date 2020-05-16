@@ -1,4 +1,3 @@
-/*
 #ifndef BRYLA_HH
 #define BRYLA_HH
 
@@ -16,16 +15,19 @@ using std::endl;
 
 class Bryla
 {
-//MacierzRot polozenie;
+
 protected:
-//MacierzRot polozenie;
+  //std::shared_ptr<drawNS::Draw3DAPI> api;
+  //int indeks;
+  //Wektor<double,3> srodek;
+  //MacierzRot polozenie;
 
 
 public:
-//virtual void rysuj ()=0;
-
+  virtual void rysuj ()=0;
+  virtual void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)=0;
 
 };
 
 #endif
-*/
+

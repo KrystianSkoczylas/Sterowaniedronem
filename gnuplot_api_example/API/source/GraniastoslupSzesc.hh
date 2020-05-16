@@ -7,14 +7,15 @@
 #include "Macierz.hh"
 #include "MacierzRot.hh"
 #include "Dr3D_gnuplot_api.hh"
+#include "Bryla.hh"
 
 using std::vector;
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
-
 class GraniastoslupSzesc
+//class GraniastoslupSzesc :public Bryla
 {
 
 protected:
@@ -54,10 +55,8 @@ public:
   void obroc (MacierzRot obrocenie);
   void zmien_srodek (Wektor<double,3> nowy_srodek);
   void zmien_orientacje (MacierzRot nowy_obrot);
-  //int rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const;
   void rysuj ();
   void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);
 };
-
 
 #endif

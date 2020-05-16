@@ -6,15 +6,15 @@
 #include "Macierz.hh"
 #include "MacierzRot.hh"
 #include "Dr3D_gnuplot_api.hh"
-//#include "Bryla.hh"
+#include "Bryla.hh"
 
 using std::vector;
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
-
-class Prostopadloscian //:public Bryla
+//class Prostopadloscian :public Bryla
+class Prostopadloscian
 {
 protected:
   std::shared_ptr<drawNS::Draw3DAPI> api;
@@ -43,9 +43,8 @@ public:
   
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);
-  // int rysuj (std::shared_ptr<drawNS::Draw3DAPI> api) const;
   void rysuj ();
-  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);//zdefiniowane w bryle
+  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);//zdefiniowane w bryle?
 
   
 };

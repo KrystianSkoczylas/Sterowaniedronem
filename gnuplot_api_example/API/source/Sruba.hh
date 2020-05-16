@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "GraniastoslupSzesc.hh"
-
+#include "Bryla.hh"
 class Sruba :public GraniastoslupSzesc
+//class Sruba :public GraniastoslupSzesc, public Bryla
 {
 
 public:

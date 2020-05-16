@@ -1,6 +1,5 @@
 #include "GraniastoslupSzesc.hh"
 
-//#define T 0.86602540378443864
 GraniastoslupSzesc::GraniastoslupSzesc (double a, double b)
 {
   indeks=0;
@@ -65,19 +64,15 @@ void GraniastoslupSzesc::obroc (MacierzRot obrocenie)
 }
 
 void GraniastoslupSzesc::rysuj ()
-{//int a;
-
-   if(indeks != 0)
-     api->erase_shape(indeks);
+{
+  if(indeks != 0)
+    api->erase_shape(indeks);
  
    indeks=api->draw_polyhedron(vector<vector<Point3D> > {{
 	 drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2]), drawNS::Point3D(g5[0],g5[1],g5[2]), drawNS::Point3D(g6[0],g6[1],g6[2])
       },{
 	 drawNS::Point3D(g7[0],g7[1],g7[2]), drawNS::Point3D(g8[0],g8[1],g8[2]), drawNS::Point3D(g9[0],g9[1],g9[2]), drawNS::Point3D(g10[0],g10[1],g10[2]), drawNS::Point3D(g11[0],g11[1],g11[2]), drawNS::Point3D(g12[0],g12[1],g12[2])	
 	  }},"red");
-
-
-   // return a;
 }
 
 void GraniastoslupSzesc::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)

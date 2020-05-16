@@ -35,7 +35,7 @@ void Sruba::przesun_srube (Wektor<double,3> W)
   rysuj(); 
 }
 
-void Sruba::ustaw_srube (double a, double b) //parametr obot a przesuniecie na punktach
+void Sruba::ustaw_srube (double a, double b)
 {
  v1[0]=-a/2;   v1[1]=a*T;    v1[2]=-b/2;
   v2[0]=a/2;    v2[1]=a*T;    v2[2]=-b/2;
