@@ -8,6 +8,7 @@
 #include "GraniastoslupSzesc.hh"
 #include "Dron.hh"
 #include "Sruba.hh"
+#include "Plaszczyzna.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -139,9 +140,12 @@ int main() {
 	}
       
 	}*/ 
-
-  
-  Dron D(30.0,25.0,15.0);
+  Plaszczyzna P(199.0,199.0,99.0);
+  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
+  P.ustawwskaznik(api);
+  P.rysuj();
+  exit(1);
+  /*Dron D(30.0,25.0,15.0);
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,1000));
   D.ustawwskaznik(api);
   api->change_ref_time_ms(0);
@@ -153,7 +157,6 @@ int main() {
   char wybor;
   while(wybor!='q')
     {
-      //wybor='a';
       std::cin>>wybor;
       switch(wybor)
 	{
@@ -186,16 +189,16 @@ int main() {
 	default: std::cout<<"Nieznana opcja"<<std::endl;break;
 	}
       
-    }
+	} koniec kometarza drona*/
     
-  D.rysuj();
+  // D.rysuj();
   wait4key();
-  D.obrot(360);
+  // D.obrot(360);
   Wektor<double,3> pr;
   pr[0]=30;
   //D.przesun(pr);
   wait4key();
-  D.plyn(45,500);
+  //D.plyn(45,500);
   // D.przesun(pr);
   //D.rysuj();
   wait4key();   
