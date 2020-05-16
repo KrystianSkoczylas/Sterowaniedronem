@@ -1,0 +1,11 @@
+#include "Dno.hh"
+
+Dno::Dno (double a, double b, double c)
+{
+
+}
+
+void Dno::rysuj ()
+{
+  Plaszczyzna::rysuj();
+}

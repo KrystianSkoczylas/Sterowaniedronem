@@ -9,6 +9,8 @@
 #include "Dron.hh"
 #include "Sruba.hh"
 #include "Plaszczyzna.hh"
+#include "Dno.hh"
+#include "Woda.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -140,16 +142,27 @@ int main() {
 	}
       
 	}*/ 
-  Plaszczyzna P(199.0,199.0,99.0);
+  //Plaszczyzna P(199.0,199.0,99.0);
+  //std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
+  //P.ustawwskaznik(api);
+  //P.rysuj();
+  //exit(1);
+
+  Dno Dn(199.0,199.0,-80.0);
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
-  P.ustawwskaznik(api);
-  P.rysuj();
-  exit(1);
-  /*Dron D(30.0,25.0,15.0);
-  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,1000));
+  Dn.ustawwskaznik(api);
+  Dn.rysuj();
+  Woda W(199.0,199.0,80.0);
+  W.ustawwskaznik(api);
+  W.rysuj();
+  
+  Dron D(30.0,25.0,15.0);
+  //std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,1000));
   D.ustawwskaznik(api);
-  api->change_ref_time_ms(0);
+  //api->change_ref_time_ms(0);
   D.rysuj();
+  Dn.rysuj();
+  W.rysuj(); 
   cout<<"q-zakoncz"<<endl;
   cout<<"p-plyn"<<endl;
   cout<<"o-obroc"<<endl;
@@ -189,20 +202,20 @@ int main() {
 	default: std::cout<<"Nieznana opcja"<<std::endl;break;
 	}
       
-	} koniec kometarza drona*/
+    } 
     
   // D.rysuj();
-  wait4key();
+  // wait4key();
   // D.obrot(360);
-  Wektor<double,3> pr;
-  pr[0]=30;
+  // Wektor<double,3> pr;
+  //pr[0]=30;
   //D.przesun(pr);
-  wait4key();
+  //wait4key();
   //D.plyn(45,500);
   // D.przesun(pr);
   //D.rysuj();
-  wait4key();   
-  exit(1); 
+  // wait4key();   
+  // exit(1); 
 
   /* Sruba S(10,7);
    std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));

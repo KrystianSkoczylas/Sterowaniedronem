@@ -3,13 +3,13 @@ CPPFLAGS= -c -g -Wall -pedantic -std=c++17
 __start__: example.out
 	./example.out
 
-example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o
-	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o  -lpthread
+example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o
+	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o -lpthread
 
 #example.out: Dr3D_gnuplot_api.o example.o
 #	g++ -o example.out example.o Dr3D_gnuplot_api.o -lpthread
 
-example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh Sruba.hh Plaszczyzna.hh
+example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh Sruba.hh Plaszczyzna.hh Dno.hh Woda.hh
 	g++ ${CPPFLAGS} -o example.o example.cpp
 
 #example.o: example.cpp Dr3D_gnuplot_api.hh 
@@ -20,6 +20,12 @@ Dr3D_gnuplot_api.o: Dr3D_gnuplot_api.cpp Dr3D_gnuplot_api.hh
 
 Dr3D_gnuplot_api.hh: Draw3D_api_interface.hh
 	touch Dr3D_gnuplot_api.hh
+
+Dno.o: Dno.cpp Dno.hh Plaszczyzna.hh
+	g++ ${CPPFLAGS} -o Dno.o Dno.cpp
+
+Woda.o: Woda.cpp Woda.hh Plaszczyzna.hh
+	g++ ${CPPFLAGS} -o Woda.o Woda.cpp
 
 Sruba.o: Sruba.cpp Sruba.hh
 	g++ ${CPPFLAGS} -o Sruba.o Sruba.cpp
@@ -46,4 +52,4 @@ Wektor.o: Wektor.cpp SWektor.cpp Wektor.hh
 	g++ ${CPPFLAGS} -o Wektor.o SWektor.cpp
 
 clear:
-	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o
+	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o

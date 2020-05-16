@@ -114,6 +114,8 @@ string APIGnuPlot3D::translate_color(const string & color) const {
   string out = "lc rgb \'#";
   if (!color.compare("black"))
     return out+"000000\'";
+  if (!color.compare("brown"))
+    return out+"8b4513\'";
   if (!color.compare("white"))
     return out+"ffffff\'";
   if (!color.compare("grey"))
