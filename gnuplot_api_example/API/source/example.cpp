@@ -22,7 +22,6 @@ void wait4key() {
 }
 
 int main() {
-  std::cout<<"Halo"<<endl;
   // Wektor <double,3> W;
   // std::cin>>W;
   // std::cout<<W;
@@ -142,16 +141,56 @@ int main() {
 	}*/ 
 
   
-  Dron D(30.0,20.0,15.0);
+  Dron D(30.0,25.0,15.0);
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,1000));
   D.ustawwskaznik(api);
- 
   api->change_ref_time_ms(0);
-
-  wait4key();
+  D.rysuj();
+  cout<<"q-zakoncz"<<endl;
+  cout<<"p-plyn"<<endl;
+  cout<<"o-obroc"<<endl;
+  
+  char wybor;
+  while(wybor!='q')
+    {
+      //wybor='a';
+      std::cin>>wybor;
+      switch(wybor)
+	{
+	case 'q':
+	  {
+	    std::cout<<"Koniec"<<std::endl;
+	    exit(1);
+	  }
+	case 'p':
+	  {
+	    double odleglosc, stopnie;
+	    std::cout<<"plyn. Podaj stopnie: ";
+	    std::cin>>stopnie;
+	    std::cout<<"plyn. Podaj odleglosc: ";	   
+	    std::cin>>odleglosc;
+	    D.plyn(stopnie,odleglosc);
+	    break;
+	  }
+	case 'o':
+	  {
+	    double ile,stopnie;
+	    std::cout<<"obrot. Podaj ile razy: ";
+	    std::cin>>ile;
+	    std::cout<<"obrot. Podaj stopnie: ";
+	    std::cin>>stopnie;
+	    for(int i=0;i<ile;++i)
+	      {D.obrot(stopnie);}
+	    break;
+	  }
+	default: std::cout<<"Nieznana opcja"<<std::endl;break;
+	}
+      
+    }
+    
   D.rysuj();
   wait4key();
-  //D.obrot(360);
+  D.obrot(360);
   Wektor<double,3> pr;
   pr[0]=30;
   //D.przesun(pr);

@@ -90,7 +90,7 @@ void GraniastoslupSzesc::zmien_srodek (Wektor<double,3> nowy_srodek)
   srodek[0]=nowy_srodek[0];
   srodek[1]=nowy_srodek[1];
   srodek[2]=nowy_srodek[2];
- g1=srodek+polozenie*v1;
+  g1=srodek+polozenie*v1;
   g2=srodek+polozenie*v2;
   g3=srodek+polozenie*v3;
   g4=srodek+polozenie*v4;
@@ -101,7 +101,7 @@ void GraniastoslupSzesc::zmien_srodek (Wektor<double,3> nowy_srodek)
   g9=srodek+polozenie*v9;
   g10=srodek+polozenie*v10;
   g11=srodek+polozenie*v11;
-  g12=srodek+polozenie*v12;
+  g12=srodek+polozenie*v12; 
 }
 
 void GraniastoslupSzesc::zmien_orientacje (MacierzRot nowy_obrot)

@@ -19,8 +19,8 @@ Dron::Dron (double a, double b, double c)
   g6=v6;
   g7=v7;
   g8=v8;
-  L.ustaw_srube(a/2,a/2);
-  P.ustaw_srube(a/2,a/2);
+  L.ustaw_srube(a/4,a/4);
+  P.ustaw_srube(a/4,a/4);
   ustaw_bazowe_polozenie_orientacje_srub();
   L.zmien_orientacje(Bazowa_orientacja_srub);
   P.zmien_orientacje(Bazowa_orientacja_srub);
@@ -34,8 +34,13 @@ void Dron::obrot (double stopnie)
     { 
       MacierzRot R(1,'z');
       obroc(R);
+      L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
+      P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
       L.zmien_orientacje(polozenie * Bazowa_orientacja_srub);
       P.zmien_orientacje(polozenie * Bazowa_orientacja_srub);
+      MacierzRot Krecenie(15,'z');
+      L.obroc(Krecenie);
+      P.obroc(Krecenie);
       rysuj();
     }
   
@@ -55,9 +60,10 @@ void Dron::plyn (double stopnie, double odleglosc)
       przesun(W);
       L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
       P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
+      MacierzRot Krecenie(15,'z');
+      L.obroc(Krecenie);
+      P.obroc(Krecenie);
       rysuj();
-      
-      //std::cout<<i;
     }
 }
 
@@ -95,8 +101,8 @@ void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
 {
   MacierzRot R(90,'y');
   Bazowa_orientacja_srub=R;
-  Bazowe_polozenie_srubyL[0]=-5; Bazowe_polozenie_srubyL[1]=20; Bazowe_polozenie_srubyL[2]=0; 
-  Bazowe_polozenie_srubyP[0]=-5; Bazowe_polozenie_srubyP[1]=-20;  Bazowe_polozenie_srubyP[2]=0;
+  Bazowe_polozenie_srubyL[0]=-20; Bazowe_polozenie_srubyL[1]=10; Bazowe_polozenie_srubyL[2]=0; 
+  Bazowe_polozenie_srubyP[0]=-20; Bazowe_polozenie_srubyP[1]=-10;  Bazowe_polozenie_srubyP[2]=0;
 }
 
 
