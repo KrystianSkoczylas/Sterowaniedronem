@@ -13,13 +13,13 @@ using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
-//class Prostopadloscian :public Bryla
-class Prostopadloscian
+class Prostopadloscian :public Bryla
+//class Prostopadloscian
 {
 protected:
-  std::shared_ptr<drawNS::Draw3DAPI> api;
-  int indeks;
-  Wektor<double,3> srodek;
+  //std::shared_ptr<drawNS::Draw3DAPI> api;
+  //int indeks;
+  //Wektor<double,3> srodek;
   Wektor<double,3> v1;
   Wektor<double,3> v2;
   Wektor<double,3> v3;
@@ -36,16 +36,15 @@ protected:
   Wektor<double,3> g6;
   Wektor<double,3> g7;
   Wektor<double,3> g8;
-  MacierzRot polozenie;
+  //MacierzRot polozenie;
 public:
   Prostopadloscian (double a, double b, double c);
   Prostopadloscian () {}
   
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);
-  void rysuj ();
-  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);//zdefiniowane w bryle?
-
+  void rysuj () override;
+  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
   
 };
 

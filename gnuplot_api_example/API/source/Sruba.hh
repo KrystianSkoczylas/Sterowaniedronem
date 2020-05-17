@@ -5,7 +5,6 @@
 #include "GraniastoslupSzesc.hh"
 #include "Bryla.hh"
 class Sruba :public GraniastoslupSzesc
-//class Sruba :public GraniastoslupSzesc, public Bryla
 {
 
 public:
@@ -13,6 +12,8 @@ public:
   Sruba(double a, double b);
   void przesun_srube (Wektor<double,3> W);
   void ustaw_srube (double a, double b);
+
+  
 };
 
 #endif

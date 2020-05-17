@@ -17,11 +17,10 @@ class Bryla
 {
 
 protected:
-  //std::shared_ptr<drawNS::Draw3DAPI> api;
-  //int indeks;
-  //Wektor<double,3> srodek;
-  //MacierzRot polozenie;
-
+  std::shared_ptr<drawNS::Draw3DAPI> api;
+  int indeks;
+  Wektor<double,3> srodek;
+  MacierzRot polozenie;
 
 public:
   virtual void rysuj ()=0;

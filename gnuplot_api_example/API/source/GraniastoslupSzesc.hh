@@ -14,14 +14,14 @@ using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
-class GraniastoslupSzesc
-//class GraniastoslupSzesc :public Bryla
+//class GraniastoslupSzesc
+class GraniastoslupSzesc :public Bryla
 {
 
 protected:
-  std::shared_ptr<drawNS::Draw3DAPI> api;
-  int indeks;
-  Wektor<double,3> srodek;
+  //std::shared_ptr<drawNS::Draw3DAPI> api;
+  //int indeks;
+  //Wektor<double,3> srodek;
   Wektor<double,3> v1;
   Wektor<double,3> v2;
   Wektor<double,3> v3;
@@ -46,7 +46,7 @@ protected:
   Wektor<double,3> g10;
   Wektor<double,3> g11;
   Wektor<double,3> g12;
-  MacierzRot polozenie;
+  //MacierzRot polozenie;
 public:
   GraniastoslupSzesc (double a, double b);
   GraniastoslupSzesc () {}
@@ -55,8 +55,8 @@ public:
   void obroc (MacierzRot obrocenie);
   void zmien_srodek (Wektor<double,3> nowy_srodek);
   void zmien_orientacje (MacierzRot nowy_obrot);
-  void rysuj ();
-  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);
+  void rysuj () override;
+  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
 };
 
 #endif
