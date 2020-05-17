@@ -39,6 +39,7 @@ int main() {
   cout<<"q-zakoncz"<<endl;
   cout<<"p-plyn"<<endl;
   cout<<"o-obroc"<<endl;
+  cout<<"m-menu"<<endl;
   
   char wybor;
   while(wybor!='q')
@@ -70,6 +71,14 @@ int main() {
 	    std::cin>>stopnie;
 	    for(int i=0;i<ile;++i)
 	      {D.obrot(stopnie);}
+	    break;
+	  }
+	case 'm':
+	  {
+	    cout<<"q-zakoncz"<<endl;
+	    cout<<"p-plyn"<<endl;
+	    cout<<"o-obroc"<<endl;
+	    cout<<"m-menu"<<endl;
 	    break;
 	  }
 	default: std::cout<<"Nieznana opcja"<<std::endl;break;
