@@ -56,7 +56,7 @@ public:
   void zmien_srodek (Wektor<double,3> nowy_srodek);
   void zmien_orientacje (MacierzRot nowy_obrot);
   void rysuj () override;
-  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
+  //void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
 };
 
 #endif

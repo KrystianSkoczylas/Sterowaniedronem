@@ -44,7 +44,7 @@ public:
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);
   void rysuj () override;
-  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
+  //void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
   
 };
 

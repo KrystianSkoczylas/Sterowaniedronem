@@ -17,7 +17,7 @@ public:
   void obrot (double stopnie);
   void plyn (double stopnie, double odleglosc);
   Dron(double a, double b, double c);
-  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)override;
+  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);
   void rysuj()override;
 
   void ustaw_bazowe_polozenie_orientacje_srub ();

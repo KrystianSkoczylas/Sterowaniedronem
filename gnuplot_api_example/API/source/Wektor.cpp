@@ -1,6 +1,7 @@
 #include "Wektor.hh"
 #include <cmath>
 /*!
+ *\file
  *\brief Definicja metody szablonu wektora
  *
  *Zawiera definicje metod szablonu wektora.

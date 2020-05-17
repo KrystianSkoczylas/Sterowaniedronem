@@ -24,8 +24,8 @@ protected:
 
 public:
   virtual void rysuj ()=0;
-  virtual void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)=0;
-
+  //virtual void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)=0;
+  void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);
 };
 
 #endif
