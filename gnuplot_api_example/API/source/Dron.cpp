@@ -43,10 +43,6 @@ void Dron::obrot (double stopnie)
       P.obroc(Krecenie);
       rysuj();
     }
-  //MacierzRot Nowa(stopnie,'z');
-  // polozenie[0]=Nowa[0];
-  // polozenie[1]=Nowa[1];
-  //polozenie[2]=Nowa[2];
 }
 
 void Dron::plyn (double stopnie, double odleglosc)
