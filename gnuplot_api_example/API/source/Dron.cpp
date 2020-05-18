@@ -42,7 +42,11 @@ void Dron::obrot (double stopnie)
       L.obroc(Krecenie);
       P.obroc(Krecenie);
       rysuj();
-    }  
+    }
+  //MacierzRot Nowa(stopnie,'z');
+  // polozenie[0]=Nowa[0];
+  // polozenie[1]=Nowa[1];
+  //polozenie[2]=Nowa[2];
 }
 
 void Dron::plyn (double stopnie, double odleglosc)
@@ -89,10 +93,3 @@ void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
   Bazowe_polozenie_srubyL[0]=-20; Bazowe_polozenie_srubyL[1]=10; Bazowe_polozenie_srubyL[2]=0; 
   Bazowe_polozenie_srubyP[0]=-20; Bazowe_polozenie_srubyP[1]=-10;  Bazowe_polozenie_srubyP[2]=0;
 }
-
-/*
-int Dron::wez_indeks() const 
-{
-  return indeks;
-}
-*/
