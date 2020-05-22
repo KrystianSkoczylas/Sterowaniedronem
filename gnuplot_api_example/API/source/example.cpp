@@ -12,6 +12,8 @@
 #include "Dno.hh"
 #include "Woda.hh"
 #include "Bryla.hh"
+#include "DronInterfejs.hh"
+#include "Przeszkoda.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -27,15 +29,24 @@ void wait4key() {
 
 int main() {
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
+  std::vector<Przeszkoda* > lista_przeszkod;
   Dno Dn(199.0,199.0,-80.0);
-  Dn.ustawwskaznik(api); 
+  Dn.ustawwskaznik(api);
+  lista_przeszkod.push_back(&Dn);
   Woda W(199.0,199.0,80.0);
   W.ustawwskaznik(api);  
   Dron D(30.0,25.0,15.0);
   D.ustawwskaznik(api);
+  Prostopadloscian Pro(10,20,30);
+  Pro.ustawwskaznik(api);
+ 
   D.rysuj();
   Dn.rysuj();
-  W.rysuj(); 
+  W.rysuj();
+  Wektor<double,3> Wek;
+  Wek[0]=50;
+  Pro.przesun(Wek);
+  Pro.rysuj();
   cout<<"q-zakoncz"<<endl;
   cout<<"p-plyn"<<endl;
   cout<<"o-obroc"<<endl;
@@ -59,7 +70,9 @@ int main() {
 	    std::cin>>stopnie;
 	    std::cout<<"plyn. Podaj odleglosc: ";	   
 	    std::cin>>odleglosc;
-	    D.plyn(stopnie,odleglosc);
+	    //D.plyn(stopnie,odleglosc);//
+	    D.plyn(stopnie,odleglosc,lista_przeszkod);//
+	    
 	    break;
 	  }
 	case 'o':

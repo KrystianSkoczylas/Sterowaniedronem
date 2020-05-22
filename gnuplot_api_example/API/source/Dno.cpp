@@ -56,3 +56,23 @@ void Dno::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
 {
    Plaszczyzna::ustawwskaznik(wskaznik);
 }
+
+
+bool Dno::czy_kolizja (DronInterfejs* D) 
+{
+  //std::cout<<"D.srodek[2]"<<D.srodek[2];
+  //std::cout<<"g1[2]"<<g1[2];
+  //std::cout<<"D.Promien"<<D.Promien;
+  
+  if(D->dostan_srodek()[2]< (g1[2] + D->dostan_Promien()) )
+    return 1; 
+  else
+    return 0;
+  
+  
+  //g1+D.srodek;
+  // Wektor<double,3> srodek_drona;
+  //srodek_drona=Dron::dostan_srodek();
+  //std::cout<<"Dno::czy_kolizja";
+}
+

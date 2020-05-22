@@ -26,6 +26,8 @@ Dron::Dron (double a, double b, double c)
   P.zmien_orientacje(Bazowa_orientacja_srub);
   L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
   P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
+  Promien=((3.0/4.0)*a);//
+  cout << Promien << endl;
 }
 
 void Dron::obrot (double stopnie)
@@ -45,7 +47,8 @@ void Dron::obrot (double stopnie)
     }
 }
 
-void Dron::plyn (double stopnie, double odleglosc)
+void Dron::plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_przeszkod)//lista przeszkod
+//void Dron::plyn (double stopnie, double odleglosc)//lista przeszkod
 {
   Wektor<double,3> W;
   W[0]=odleglosc;
@@ -56,10 +59,22 @@ void Dron::plyn (double stopnie, double odleglosc)
   W=W/dlugosc_wektora;
   
   for(double i=0;i<dlugosc_wektora;++i)
-    { 
+    {
+      //for przeszkod
+      //sprawdzanie kolizji
+      for( auto elem: l_przeszkod)
+	{
+	  if( elem->czy_kolizja(this) )
+	    {
+	      std::cout<<"Kolizja";
+	      return;
+	    }
+	}
+			   
       przesun(W);
       L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
       P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
+     
       MacierzRot Krecenie(15,'z');
       L.obroc(Krecenie);
       P.obroc(Krecenie);
@@ -88,4 +103,19 @@ void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
   Bazowa_orientacja_srub=R;
   Bazowe_polozenie_srubyL[0]=-20; Bazowe_polozenie_srubyL[1]=10; Bazowe_polozenie_srubyL[2]=0; 
   Bazowe_polozenie_srubyP[0]=-20; Bazowe_polozenie_srubyP[1]=-10;  Bazowe_polozenie_srubyP[2]=0;
+}
+
+Wektor<double,3> Dron::dostan_srodek () 
+{
+  return srodek;
+}
+
+double Dron::dostan_Promien ()
+{
+  return Promien;
+}
+
+bool Dron::czy_kolizja (DronInterfejs* D)//pierwszy niejawny argument do dron
+{
+  return 0;
 }

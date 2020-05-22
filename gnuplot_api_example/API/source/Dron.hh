@@ -5,6 +5,8 @@
 #include "Prostopadloscian.hh"
 #include "Sruba.hh"
 #include "Bryla.hh"
+#include "DronInterfejs.hh"
+#include "Przeszkoda.hh"
 /*!
  *\file Plik zawierajacy klase Dron
  *\brief Definicja Klasy Dron
@@ -22,7 +24,8 @@
  *elemetach w tym parametry srub. Klasa umozliwia podstawowe sterowanie
  *dronem z animowanym ruchem.
  */
-class Dron :public Prostopadloscian
+class Dron :public Prostopadloscian, public DronInterfejs, public Przeszkoda
+//class Dron :public Prostopadloscian, public Przeszkoda
 {
   /*!
    *\brief Bazowa orientacja srub
@@ -48,6 +51,15 @@ class Dron :public Prostopadloscian
    *kolejno wspolrzednym na osiach x, y, z ukladu.
    */
   Wektor<double,3> Bazowe_polozenie_srubyP;
+  /*!
+   *\brief Promien drona do kolizji
+   *
+   *Promien drona okresla niewidzialna kula wokol niego, ktora
+   *sluzy do wykrywania kolizji. Jezeli przeszkoda znajdzie sie blizej
+   *niz odleglosc promienia od srodka drona zostanie wykryte niebezpieczenstwo
+   *kloizji drona z dana przeszkoda.
+   */
+  double Promien;
 public:
   /*!
    *\brief Lewa sruba Drona
@@ -95,7 +107,8 @@ public:
    *\param[in] stopnie - Liczba stopni okreslajaca opadanie lub wznoszenie.
    *\param[in] odleglosc - Wartosc odleglosi o jaka ma poruszyc sie dron.
    */
-  void plyn (double stopnie, double odleglosc);
+  //void plyn (double stopnie, double odleglosc);
+  void plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_przeszkod);
   /*!
     *\brief Konstruktor trzyparametryczny drona
     *
@@ -137,7 +150,12 @@ public:
    *polozenia i orientacji drona. Sruby sa tak przesuwane i obracane aby
    *znalesc sie tylnej sciane danego drona.
    */
-  void ustaw_bazowe_polozenie_orientacje_srub ();  
+  void ustaw_bazowe_polozenie_orientacje_srub ();
+
+
+  Wektor<double,3> dostan_srodek ()override ;
+  double dostan_Promien ()override ;
+  bool czy_kolizja (DronInterfejs* D) override; //override;
 };
 
 #endif

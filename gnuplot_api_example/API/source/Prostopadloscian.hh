@@ -7,6 +7,7 @@
 #include "MacierzRot.hh"
 #include "Dr3D_gnuplot_api.hh"
 #include "Bryla.hh"
+//#include "Przeszkoda.hh"//
 
 using std::vector;
 using drawNS::Point3D;
@@ -14,7 +15,7 @@ using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
 class Prostopadloscian :public Bryla
-//class Prostopadloscian
+//class Prostopadloscian :public Bryla, public Przeszkoda
 {
 protected:
   //std::shared_ptr<drawNS::Draw3DAPI> api;
