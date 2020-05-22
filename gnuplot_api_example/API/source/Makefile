@@ -3,10 +3,10 @@ CPPFLAGS= -c -g -Wall -pedantic -std=c++17
 __start__: example.out
 	./example.out
 
-example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o Przeszkoda.o DronInterfejs.o
-	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o Przeszkoda.o DronInterfejs.o -lpthread
+example.out: Dr3D_gnuplot_api.o example.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o Przeszkoda.o DronInterfejs.o PrzeszkodaProstopadloscian.o
+	g++ -o example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o Przeszkoda.o DronInterfejs.o PrzeszkodaProstopadloscian.o -lpthread
 
-example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh Sruba.hh Plaszczyzna.hh Dno.hh Woda.hh Bryla.hh Przeszkoda.hh DronInterfejs.hh
+example.o: example.cpp Dr3D_gnuplot_api.hh Wektor.hh Macierz.hh MacierzRot.hh Prostopadloscian.hh GraniastoslupSzesc.hh Dron.hh Sruba.hh Plaszczyzna.hh Dno.hh Woda.hh Bryla.hh Przeszkoda.hh DronInterfejs.hh PrzeszkodaProstopadloscian.hh
 	g++ ${CPPFLAGS} -o example.o example.cpp
 
 Dr3D_gnuplot_api.o: Dr3D_gnuplot_api.cpp Dr3D_gnuplot_api.hh
@@ -14,6 +14,9 @@ Dr3D_gnuplot_api.o: Dr3D_gnuplot_api.cpp Dr3D_gnuplot_api.hh
 
 Dr3D_gnuplot_api.hh: Draw3D_api_interface.hh
 	touch Dr3D_gnuplot_api.hh
+
+PrzeszkodaProstopadloscian.o: PrzeszkodaProstopadloscian.cpp PrzeszkodaProstopadloscian.hh
+	g++ ${CPPFLAGS} -o PrzeszkodaProstopadloscian.o PrzeszkodaProstopadloscian.cpp
 
 DronInterfejs.o: DronInterfejs.cpp DronInterfejs.hh
 	g++ ${CPPFLAGS} -o DronInterfejs.o DronInterfejs.cpp
@@ -55,4 +58,4 @@ Wektor.o: Wektor.cpp SWektor.cpp Wektor.hh
 	g++ ${CPPFLAGS} -o Wektor.o SWektor.cpp
 
 clear:
-	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o Przeszkoda.o DronInterfejs.o
+	rm example.out example.o Dr3D_gnuplot_api.o Wektor.o Macierz.o MacierzRot.o Prostopadloscian.o GraniastoslupSzesc.o Dron.o Sruba.o Plaszczyzna.o Dno.o Woda.o Bryla.o Przeszkoda.o DronInterfejs.o PrzeszkodaProstopadloscian.o

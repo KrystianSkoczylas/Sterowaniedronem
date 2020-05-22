@@ -7,7 +7,9 @@
 #include "MacierzRot.hh"
 #include "Dr3D_gnuplot_api.hh"
 #include "Bryla.hh"
-//#include "Przeszkoda.hh"//
+
+//#include "Przeszkoda.hh"
+//#include "DronInterfejs.hh"
 
 using std::vector;
 using drawNS::Point3D;

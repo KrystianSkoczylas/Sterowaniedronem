@@ -1,0 +1,13 @@
+#ifndef PRZESZKODAPROSTOPADLOSCIAN_HH
+#define PRZESZKODAPROSTOPADLOSCIAN_HH
+
+#include <iostream
+
+
+class PrzeszkodaProstopadloscian
+{
+
+  
+};
+
+#endif

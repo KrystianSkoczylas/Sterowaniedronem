@@ -65,7 +65,7 @@ bool Dno::czy_kolizja (DronInterfejs* D)
   //std::cout<<"D.Promien"<<D.Promien;
   
   if(D->dostan_srodek()[2]< (g1[2] + D->dostan_Promien()) )
-    return 1; 
+    { std::cout<<"Kolizja z Dno"<<std::endl; return 1; } 
   else
     return 0;
   

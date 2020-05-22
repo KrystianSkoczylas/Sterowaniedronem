@@ -55,3 +55,11 @@ void Woda::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
 {
    Plaszczyzna::ustawwskaznik(wskaznik);
 }
+
+bool Woda::czy_kolizja (DronInterfejs* D)
+{
+  if(D->dostan_srodek()[2] > (g1[2]) )
+    { std::cout<<"Kolizja z Woda"<<std::endl; return 1;} 
+  else
+    return 0;
+}

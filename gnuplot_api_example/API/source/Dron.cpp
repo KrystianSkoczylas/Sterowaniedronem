@@ -26,8 +26,7 @@ Dron::Dron (double a, double b, double c)
   P.zmien_orientacje(Bazowa_orientacja_srub);
   L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
   P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
-  Promien=((3.0/4.0)*a);//
-  cout << Promien << endl;
+  Promien=((3.5/4.0)*a);
 }
 
 void Dron::obrot (double stopnie)
@@ -60,13 +59,24 @@ void Dron::plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_pr
   
   for(double i=0;i<dlugosc_wektora;++i)
     {
-      //for przeszkod
-      //sprawdzanie kolizji
       for( auto elem: l_przeszkod)
 	{
+	  if(elem==this)
+	    continue;
 	  if( elem->czy_kolizja(this) )
 	    {
-	      std::cout<<"Kolizja";
+	      // std::cout<<"Kolizja"<<std::endl;
+	      W[0]=-odleglosc;
+	      W=polozenie*W;
+	      W=R*W;
+	      W=W/dlugosc_wektora;
+	      przesun(W);
+	      L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
+	      P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
+	      MacierzRot Krecenie(-15,'z');
+	      L.obroc(Krecenie);
+	      P.obroc(Krecenie);
+	      rysuj();
 	      return;
 	    }
 	}
@@ -74,7 +84,6 @@ void Dron::plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_pr
       przesun(W);
       L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
       P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
-     
       MacierzRot Krecenie(15,'z');
       L.obroc(Krecenie);
       P.obroc(Krecenie);
@@ -117,5 +126,23 @@ double Dron::dostan_Promien ()
 
 bool Dron::czy_kolizja (DronInterfejs* D)//pierwszy niejawny argument do dron
 {
-  return 0;
+  if(
+     (D->dostan_srodek()[0] > (g4[0] - D->dostan_Promien()) ) &&
+     (D->dostan_srodek()[0] < (g6[0] + D->dostan_Promien()) ) &&
+     (D->dostan_srodek()[1] > (g4[1] - D->dostan_Promien()) ) &&
+     (D->dostan_srodek()[1] < (g6[1] + D->dostan_Promien()) ) &&
+     (D->dostan_srodek()[2] > (g4[2] - D->dostan_Promien()) ) &&
+     (D->dostan_srodek()[2] < (g6[2] + D->dostan_Promien()) )
+     )
+    { std::cout<<"Kolizja z Dron"<<std::endl; return 1; } 
+  else
+    return 0;
+}
+
+void Dron::przesun_dron (Wektor<double,3> przesuniecie)
+{
+  przesun(przesuniecie);
+  L.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyL));
+  P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
+  rysuj();
 }

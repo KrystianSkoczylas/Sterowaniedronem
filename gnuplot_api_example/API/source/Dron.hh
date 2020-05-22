@@ -155,7 +155,9 @@ public:
 
   Wektor<double,3> dostan_srodek ()override ;
   double dostan_Promien ()override ;
-  bool czy_kolizja (DronInterfejs* D) override; //override;
+  bool czy_kolizja (DronInterfejs* D) override;
+
+  void przesun_dron (Wektor<double,3> przesuniecie);
 };
 
 #endif
