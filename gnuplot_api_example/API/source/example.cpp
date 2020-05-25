@@ -30,20 +30,35 @@ void wait4key() {
 
 int main() {
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
-  std::vector<Przeszkoda* > lista_przeszkod;
+  std::vector<Przeszkoda*> lista_przeszkod;
+  std::vector<Dron*> kolekcja_dronow;
+  Dron* D;
+  
   Dno Dn(199.0,199.0,-80.0);
   Dn.ustawwskaznik(api);
   lista_przeszkod.push_back(&Dn);
   Woda W(199.0,199.0,80.0);
   W.ustawwskaznik(api);
   lista_przeszkod.push_back(&W);
-  Dron D(30.0,25.0,15.0);
-  D.ustawwskaznik(api);
-  lista_przeszkod.push_back(&D);
+  
+  Dron Dron1(30.0,25.0,15.0);
+  Dron1.ustawwskaznik(api);
+  kolekcja_dronow.push_back(new Dron(Dron1));
+  kolekcja_dronow[0]->plyn(0,-70,lista_przeszkod);
+  lista_przeszkod.push_back(kolekcja_dronow[0]);
+  D=kolekcja_dronow[0];
+  
   Dron Drugi(30.0,30.0,30.0);
   Drugi.ustawwskaznik(api);
-  lista_przeszkod.push_back(&Drugi);
- 
+  kolekcja_dronow.push_back(new Dron(Drugi));
+  kolekcja_dronow[1]->plyn(0,50,lista_przeszkod);
+  lista_przeszkod.push_back(kolekcja_dronow[1]);
+
+  Dron Trzeci(30.0,20.0,20.0);
+  Trzeci.ustawwskaznik(api);
+  kolekcja_dronow.push_back(new Dron(Trzeci));
+  lista_przeszkod.push_back(kolekcja_dronow[2]);
+
   
   PrzeszkodaProstopadloscian Pro(10,20,30);
   Pro.ustawwskaznik(api);
@@ -54,11 +69,12 @@ int main() {
   PrzeszkodaProstopadloscian Pro3(1,1,40);
   Pro3.ustawwskaznik(api);
   lista_przeszkod.push_back(&Pro3);
-  D.rysuj();
+  
   Dn.rysuj();
   W.rysuj();
+  
   Wektor<double,3> Wek;
-  Wek[0]=80; Wek[2]=-10;
+  Wek[0]=80; Wek[1]=40; Wek[2]=-10;
   Pro.przesun(Wek);
   Pro.rysuj();
   Wektor<double,3> Wek2;
@@ -71,14 +87,43 @@ int main() {
   Pro3.rysuj();
   Wektor<double,3> Wekor;
   Wekor[0]=50; Wekor[2]=50;
-  Drugi.przesun_dron(Wekor);
-  Drugi.rysuj();
-  D.rysuj();
   
+  kolekcja_dronow[0]->rysuj();
+  kolekcja_dronow[1]->rysuj();
+  kolekcja_dronow[2]->rysuj();
+
+  char ktory;
+  cout<<"Wybierz Drona do sterowania"<<endl;
+  cout<<"1- Dron 1(Dlugi)";
+  cout<<"Polozenie Drona "<<kolekcja_dronow[0]->dostan_srodek();
+  cout<<endl;
+  cout<<"2- Dron 2(Kostka)";
+  cout<<"Polozenie Drona "<<kolekcja_dronow[1]->dostan_srodek();
+  cout<<endl;
+  cout<<"3- Dron 3(Srodkowy)";
+  cout<<"Polozenie Drona "<<kolekcja_dronow[2]->dostan_srodek();
+  cout<<endl;
+  std::cin>>ktory;
+  if(ktory=='1')
+    D=kolekcja_dronow[0];
+  if(ktory=='2')
+    D=kolekcja_dronow[1];
+  if(ktory=='3')
+    D=kolekcja_dronow[2];
+   
   cout<<"q-zakoncz"<<endl;
   cout<<"p-plyn"<<endl;
   cout<<"o-obroc"<<endl;
   cout<<"m-menu"<<endl;
+  cout<<"1-zmiana na Dron 1(Dlugi) ";
+  cout<<"Polozenie Drona "<<kolekcja_dronow[0]->dostan_srodek();
+  cout<<endl;
+  cout<<"2-zmiana na Dron 2(Kostka) ";
+  cout<<"Polozenie Drona "<<kolekcja_dronow[1]->dostan_srodek();
+  cout<<endl;
+  cout<<"3-zmiana na Dron 3(Srodkowy) ";
+  cout<<"Polozenie Drona "<<kolekcja_dronow[2]->dostan_srodek();
+  cout<<endl;
   
   char wybor;
   while(wybor!='q')
@@ -99,7 +144,8 @@ int main() {
 	    std::cout<<"plyn. Podaj odleglosc: ";	   
 	    std::cin>>odleglosc;
 	    //D.plyn(stopnie,odleglosc);//
-	    D.plyn(stopnie,odleglosc,lista_przeszkod);//
+	    // Dron1.plyn(stopnie,odleglosc,lista_przeszkod);//
+	     D->plyn(stopnie,odleglosc,lista_przeszkod);
 	    
 	    break;
 	  }
@@ -111,7 +157,9 @@ int main() {
 	    std::cout<<"obrot. Podaj stopnie: ";
 	    std::cin>>stopnie;
 	    for(int i=0;i<ile;++i)
-	      {D.obrot(stopnie);}
+	       {D->obrot(stopnie);}
+	      // {Dron1.obrot(stopnie);}
+	      
 	    break;
 	  }
 	case 'm':
@@ -120,6 +168,33 @@ int main() {
 	    cout<<"p-plyn"<<endl;
 	    cout<<"o-obroc"<<endl;
 	    cout<<"m-menu"<<endl;
+	    cout<<"1-zmiana na Dron 1(Dlugi) ";
+	    cout<<"Polozenie Drona "<<kolekcja_dronow[0]->dostan_srodek();
+	    cout<<endl;
+	    cout<<"2-zmiana na Dron 2(Kostka) ";
+	    cout<<"Polozenie Drona "<<kolekcja_dronow[1]->dostan_srodek();
+	    cout<<endl;
+	    cout<<"3-zmiana na Dron 3(Srodkowy) ";
+	    cout<<"Polozenie Drona "<<kolekcja_dronow[2]->dostan_srodek();
+	    cout<<endl;
+	    break;
+	  }
+	case '1':
+	  {
+	    std::cout<<"zmiana na Dron 1"<<endl;
+	    D=kolekcja_dronow[0];
+	    break;
+	  }
+	case '2':
+	  {
+	    std::cout<<"zmiana na Dron 2"<<endl;
+	    D=kolekcja_dronow[1];
+	    break;
+	  }
+	case '3':
+	  {
+	    std::cout<<"zmiana na Dron 3"<<endl;
+	    D=kolekcja_dronow[2];
 	    break;
 	  }
 	default: std::cout<<"Nieznana opcja"<<std::endl;break;

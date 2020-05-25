@@ -1,5 +1,6 @@
 #include "Wektor.hh"
 #include <cmath>
+#include <iomanip>
 /*!
  *\file
  *\brief Definicja metody szablonu wektora
@@ -35,7 +36,7 @@ std::ostream& operator << (std::ostream &Strm, const Wektor<TYP,ROZMIAR> &Wek)
 {
   for(int i=0;i<ROZMIAR;++i)
     {
-      Strm<<Wek[i]<<" ";
+      Strm<<std::fixed<<std::setprecision(0)<<Wek[i]<<" "; 
     }
   return Strm;
 }
