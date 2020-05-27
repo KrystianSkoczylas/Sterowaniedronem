@@ -48,6 +48,7 @@ public:
   void obroc (MacierzRot obrocenie);
   void rysuj () override;
   //void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
+  //void usun_prostopadloscian();
   
 };
 

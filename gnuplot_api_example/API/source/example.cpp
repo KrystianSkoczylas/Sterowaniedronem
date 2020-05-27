@@ -29,18 +29,27 @@ void wait4key() {
 }
 
 int main() {
+  cout<<"Liczba utworzonych wektorow: "<< Wektor<double,3>::zwroc_utworzone();
+  cout<<endl;
+  cout<<"Liczba istniejacych wektorow: "<< Wektor<double,3>::zwroc_istniejace();
+  cout<<endl;
+  cout<<"Liczba utworzonych bryl: "<< Bryla::zwroc_utworzone();
+  cout<<endl;
+  cout<<"Liczba istniejacych bryl: "<< Bryla::zwroc_istniejace();
+  cout<<endl;
+ 
   std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,0));
   std::vector<Przeszkoda*> lista_przeszkod;
   std::vector<Dron*> kolekcja_dronow;
   Dron* D;
-  
+ 
   Dno Dn(199.0,199.0,-80.0);
   Dn.ustawwskaznik(api);
   lista_przeszkod.push_back(&Dn);
   Woda W(199.0,199.0,80.0);
   W.ustawwskaznik(api);
   lista_przeszkod.push_back(&W);
-  
+
   Dron Dron1(30.0,25.0,15.0);
   Dron1.ustawwskaznik(api);
   kolekcja_dronow.push_back(new Dron(Dron1));
@@ -51,9 +60,9 @@ int main() {
   Dron Drugi(30.0,30.0,30.0);
   Drugi.ustawwskaznik(api);
   kolekcja_dronow.push_back(new Dron(Drugi));
-  kolekcja_dronow[1]->plyn(0,50,lista_przeszkod);
+  kolekcja_dronow[1]->plyn(0,55,lista_przeszkod);
   lista_przeszkod.push_back(kolekcja_dronow[1]);
-
+ 
   Dron Trzeci(30.0,20.0,20.0);
   Trzeci.ustawwskaznik(api);
   kolekcja_dronow.push_back(new Dron(Trzeci));
@@ -91,7 +100,17 @@ int main() {
   kolekcja_dronow[0]->rysuj();
   kolekcja_dronow[1]->rysuj();
   kolekcja_dronow[2]->rysuj();
+ 
+  cout<<"Liczba utworzonych wektorow: "<< Wektor<double,3>::zwroc_utworzone();
+  cout<<endl;
+  cout<<"Liczba istniejacych wektorow: "<< Wektor<double,3>::zwroc_istniejace();
+  cout<<endl;
+  cout<<"Liczba utworzonych bryl: "<< Bryla::zwroc_utworzone();
+  cout<<endl;
+  cout<<"Liczba istniejacych bryl: "<< Bryla::zwroc_istniejace();
+  cout<<endl;
 
+  
   char ktory;
   cout<<"Wybierz Drona do sterowania"<<endl;
   cout<<"1- Dron 1(Dlugi)";
@@ -110,7 +129,16 @@ int main() {
     D=kolekcja_dronow[1];
   if(ktory=='3')
     D=kolekcja_dronow[2];
-   
+
+  
+  cout<<"Liczba utworzonych wektorow: "<< Wektor<double,3>::zwroc_utworzone();
+  cout<<endl;
+  cout<<"Liczba istniejacych wektorow: "<< Wektor<double,3>::zwroc_istniejace();
+  cout<<endl;
+  cout<<"Liczba utworzonych bryl: "<< Bryla::zwroc_utworzone();
+  cout<<endl;
+  cout<<"Liczba istniejacych bryl: "<< Bryla::zwroc_istniejace();
+  cout<<endl;
   cout<<"q-zakoncz"<<endl;
   cout<<"p-plyn"<<endl;
   cout<<"o-obroc"<<endl;
@@ -164,6 +192,14 @@ int main() {
 	  }
 	case 'm':
 	  {
+	    cout<<"Liczba utworzonych wektorow: "<< Wektor<double,3>::zwroc_utworzone();
+	    cout<<endl;
+	    cout<<"Liczba istniejacych wektorow: "<< Wektor<double,3>::zwroc_istniejace();
+	    cout<<endl;
+	    cout<<"Liczba utworzonych bryl: "<< Bryla::zwroc_utworzone();
+	    cout<<endl;
+	    cout<<"Liczba istniejacych bryl: "<< Bryla::zwroc_istniejace();
+	    cout<<endl;
 	    cout<<"q-zakoncz"<<endl;
 	    cout<<"p-plyn"<<endl;
 	    cout<<"o-obroc"<<endl;

@@ -158,6 +158,8 @@ public:
   bool czy_kolizja (DronInterfejs* D) override;
 
   void przesun_dron (Wektor<double,3> przesuniecie);
+
+  //void usun_drona ();
 };
 
 #endif

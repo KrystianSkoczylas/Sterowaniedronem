@@ -153,3 +153,15 @@ TYP Wektor<TYP,ROZMIAR>::dlugosc() const
     }
   return sqrt(wyn); 
 }
+
+template <class TYP, int ROZMIAR>
+int Wektor<TYP,ROZMIAR>::ile_istnieje(0);
+template <class TYP, int ROZMIAR>
+int Wektor<TYP,ROZMIAR>::ile_utworzono(0);
+
+//Wektor<double,3>::zwroc_istiejace();
+/*
+Klasa A;
+Klasa B = A;
+Klasa C(A);
+*/

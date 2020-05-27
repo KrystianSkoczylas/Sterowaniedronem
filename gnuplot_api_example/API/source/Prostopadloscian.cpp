@@ -61,3 +61,10 @@ void Prostopadloscian::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskazni
   api=wskaznik;
 }
 */
+ /*
+void Prostopadloscian::usun_prostopadloscian()
+{
+  if(indeks != -1)
+    api->erase_shape(indeks); 
+}
+ */

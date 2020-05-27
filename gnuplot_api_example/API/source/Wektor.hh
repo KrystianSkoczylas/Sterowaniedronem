@@ -16,13 +16,29 @@ class Wektor {
    *Tablica o zadanym typie i rozmiarze jest przedstawieniem danego wektora.
    */
   TYP tab[ROZMIAR];
+
+  static int ile_istnieje;
+  static int ile_utworzono;
+  
 public:
+  
+  static int zwroc_istniejace() {return ile_istnieje;};
+  static int zwroc_utworzone() {return ile_utworzono;};
+  
+  Wektor(const Wektor & nowy) { tab[0]=nowy.tab[0]; tab[1]=nowy.tab[1]; tab[2]=nowy.tab[2];
+    ile_istnieje++; ile_utworzono++; }
+  ~Wektor() {ile_istnieje--;}
+  
   /*!
    *\brief Konstruktor bezparametryczny wektora
    *
    *Konstruktor inicjalizuje wszystkie elemety wektora wartoscia 0.
    */
-  Wektor() {for(int i=0;i<ROZMIAR;++i) tab[i]=0;}
+  Wektor() {for(int i=0;i<ROZMIAR;++i) tab[i]=0; ile_istnieje++; ile_utworzono++; }
+
+  //konstruktor kopiujacy? uzywany?
+  //dekonstruktor ?
+  
   /*!
    *\brief Przeciazenie nawiasow klamrowych
    *

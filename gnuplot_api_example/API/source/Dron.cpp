@@ -100,6 +100,7 @@ void Dron::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
 
 void Dron::rysuj()
 {
+  if(indeks != -1)
   api->erase_shape(indeks);
   Prostopadloscian::rysuj();
   L.rysuj();
@@ -126,25 +127,34 @@ double Dron::dostan_Promien ()
 
 bool Dron::czy_kolizja (DronInterfejs* D)//pierwszy niejawny argument do dron
 {
-   if(
+  /*if(
      (D->dostan_srodek()[0] > (g4[0] - D->dostan_Promien()) ) &&
      (D->dostan_srodek()[0] < (g6[0] + D->dostan_Promien()) ) &&
      (D->dostan_srodek()[1] > (g4[1] - D->dostan_Promien()) ) &&
      (D->dostan_srodek()[1] < (g6[1] + D->dostan_Promien()) ) &&
      (D->dostan_srodek()[2] > (g4[2] - D->dostan_Promien()) ) &&
      (D->dostan_srodek()[2] < (g6[2] + D->dostan_Promien()) )
-     )
-  /*if(
-     (D->dostan_srodek()[0] > ( (srodek[0]+(g4[0]/1)) + D->dostan_Promien()) ) &&
-     (D->dostan_srodek()[0] < ( (srodek[0]+(g6[0]/1)) + D->dostan_Promien()) ) &&
-     (D->dostan_srodek()[1] > ( (srodek[1]+(g4[1]/1)) + D->dostan_Promien()) ) &&
-     (D->dostan_srodek()[1] < ( (srodek[1]+(g6[1]/1)) + D->dostan_Promien()) ) &&
-     (D->dostan_srodek()[2] > ( (srodek[2]+(g4[2]/1)) + D->dostan_Promien()) ) &&
-     (D->dostan_srodek()[2] < ( (srodek[2]+(g6[2]/1)) + D->dostan_Promien()) )
-     )*/
-    { std::cout<<"Kolizja z Dron"<<std::endl; return 1; } 
-  else
-    return 0;
+     ) */
+    /*if(
+      (D->dostan_srodek()[0] > ( (srodek[0]+(g4[0]/1)) + D->dostan_Promien()) ) &&
+      (D->dostan_srodek()[0] < ( (srodek[0]+(g6[0]/1)) + D->dostan_Promien()) ) &&
+      (D->dostan_srodek()[1] > ( (srodek[1]+(g4[1]/1)) + D->dostan_Promien()) ) &&
+      (D->dostan_srodek()[1] < ( (srodek[1]+(g6[1]/1)) + D->dostan_Promien()) ) &&
+      (D->dostan_srodek()[2] > ( (srodek[2]+(g4[2]/1)) + D->dostan_Promien()) ) &&
+      (D->dostan_srodek()[2] < ( (srodek[2]+(g6[2]/1)) + D->dostan_Promien()) )
+      )*/
+  Wektor<double,3> miedzy_srodkami;
+  miedzy_srodkami[0] = ( - D->dostan_srodek()[0] + srodek[0] );
+  miedzy_srodkami[1] = ( - D->dostan_srodek()[1] + srodek[1] );
+  miedzy_srodkami[2] = ( - D->dostan_srodek()[2] + srodek[2] );
+  if( miedzy_srodkami.dlugosc() < ( D->dostan_Promien() + Promien ) )
+    { std::cout<<"Kolizja z Dron"<<std::endl;
+      //std::cout<<miedzy_srodkami.dlugosc()<<std::endl;
+      //std::cout<<D->dostan_Promien()<<std::endl;
+      //std::cout<<Promien<<std::endl;
+      return 1; } 
+    else
+      return 0;
 }
 
 void Dron::przesun_dron (Wektor<double,3> przesuniecie)
@@ -154,3 +164,10 @@ void Dron::przesun_dron (Wektor<double,3> przesuniecie)
   P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
   rysuj();
 }
+/*
+void Dron::usun_drona()
+{
+  if(indeks != -1)
+    api->erase_shape(indeks); 
+}
+*/
