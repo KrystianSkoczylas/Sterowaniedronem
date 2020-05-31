@@ -13,7 +13,8 @@
  *
  *Plik zawiera definicje klasy Drona, ktora jest klasa pochodna i
  *jest ona specjalizacja klasy Prostopadloscian. Klasa Drona zawiera
- *dwie sruby bedace elemetami typu klasa Sruba. 
+ *dwie sruby bedace elemetami typu klasa Sruba. Klasa Dron takze dziedziczy 
+ *po klasie DronInterfejs oraz po klasie Przeszkoda. 
  */
 
 /*!
@@ -22,10 +23,10 @@
  *Klasa modeluje pojecie drona o zadanych wymiarach,odpwiednio dlugosci,
  *szerokosci i wysokosci. Dron zawiera informacje o wszystkich swoich 
  *elemetach w tym parametry srub. Klasa umozliwia podstawowe sterowanie
- *dronem z animowanym ruchem.
+ *dronem z animowanym ruchem. Dron jest takze przeszkoda i posiada funkcje
+ *wykrywania kolizji z innymi dronami.
  */
 class Dron :public Prostopadloscian, public DronInterfejs, public Przeszkoda
-//class Dron :public Prostopadloscian, public Przeszkoda
 {
   /*!
    *\brief Bazowa orientacja srub
@@ -54,10 +55,10 @@ class Dron :public Prostopadloscian, public DronInterfejs, public Przeszkoda
   /*!
    *\brief Promien drona do kolizji
    *
-   *Promien drona okresla niewidzialna kula wokol niego, ktora
+   *Promien drona okresla niewidzialna kule wokol niego, ktora
    *sluzy do wykrywania kolizji. Jezeli przeszkoda znajdzie sie blizej
    *niz odleglosc promienia od srodka drona zostanie wykryte niebezpieczenstwo
-   *kloizji drona z dana przeszkoda.
+   *kolizji drona z dana przeszkoda.
    */
   double Promien;
 public:
@@ -107,7 +108,6 @@ public:
    *\param[in] stopnie - Liczba stopni okreslajaca opadanie lub wznoszenie.
    *\param[in] odleglosc - Wartosc odleglosi o jaka ma poruszyc sie dron.
    */
-  //void plyn (double stopnie, double odleglosc);
   void plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_przeszkod);
   /*!
     *\brief Konstruktor trzyparametryczny drona
@@ -151,15 +151,49 @@ public:
    *znalesc sie tylnej sciane danego drona.
    */
   void ustaw_bazowe_polozenie_orientacje_srub ();
-
-
+  /*!
+   *\brief Zwraca srodek drona
+   *
+   *Umozliwia zrocenie wspolrzednych srodka drona reprezentowanego jako
+   *wektor okreslajacy polozenie w osiach x, y, z w innych funkcjach, gdyz
+   *srodek drona nie jest polem publicznym, wiec mozemy jedynie dostac
+   *sie w ten sposob do srodka drona.
+   *return Zwraca srodek drona bedacy wektorem
+   */
   Wektor<double,3> dostan_srodek ()override ;
+    /*!
+   *\brief Zwraca dlugosc promienia drona
+   *
+   *Umozliwia zwrocenie wartosci dlugosci promienia  drona, zaleznej od jego
+   *wymiarow, sluzacej do okreslania czy zaszla kolizja z innym dronem. Promien
+   *drona nie jest polem publicznym, wiec mozemy jedynie dostac sie w ten 
+   *sposob do wartosci dlugosci promienia drona.
+   *return Zwraca promien drona bedacy liczba typu double
+   */
   double dostan_Promien ()override ;
+    /*!
+   *\brief Czy zaszla kolizja z innym dornem
+   *
+   *Zwraca tylko dwie wartosci, w zaleznosci czy nastapila kolizja z innym
+   *dronem czy nie. Zwracana jest prawda(1) jezeli nastapila kolizja z
+   *innym dronem i falsz(0) jezeli nie ma kolizji z innym dronem. Wywolanie
+   *sprawdza aktualne srodki dronow i ich promienie rozstrzygajac czy 
+   *zaszla kolizja.
+   *\param[in] D -wskaznik na DronInterfejs umozliwia okreslenie kolizji
+   *drona z innym dronem, gdyz kazdy dron jest rownoczesnie przeszkoda dla
+   *innych dronow, jak i musi sprawdzac kolizje i innymi dronami.
+   *return Zwraca wartosc 0(brak kolizji) lub 1(kolizja)
+   */
   bool czy_kolizja (DronInterfejs* D) override;
-
+  /*!
+   *\brief Przesuwa drona
+   *
+   *Umozliwia poczatkowe przesuniecie drona bez animacji czy
+   *sprawdzania kolizji o dowlony zadany wektor wspolrzednych osi x,y,x.
+   *Funkcja testowa, pomocna w testach programu.
+   *\param[in] przesuniecie - wektor przesunicia drona
+   */
   void przesun_dron (Wektor<double,3> przesuniecie);
-
-  //void usun_drona ();
 };
 
 #endif

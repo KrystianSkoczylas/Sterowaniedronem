@@ -3,12 +3,9 @@
 
 #include <iostream>
 #include "Plaszczyzna.hh"
-
 #include "Przeszkoda.hh"
 #include "DronInterfejs.hh"
 
-
-//class Dno :public Plaszczyzna
 class Dno :public Plaszczyzna, public Przeszkoda
 {
 
@@ -19,7 +16,7 @@ public:
   void rysuj ();
   void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);
 
-  bool czy_kolizja (DronInterfejs* D) override;// override;
+  bool czy_kolizja (DronInterfejs* D) override;
 };
 
 #endif

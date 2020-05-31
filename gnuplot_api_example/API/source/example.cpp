@@ -60,7 +60,7 @@ int main() {
   Dron Drugi(30.0,30.0,30.0);
   Drugi.ustawwskaznik(api);
   kolekcja_dronow.push_back(new Dron(Drugi));
-  kolekcja_dronow[1]->plyn(0,55,lista_przeszkod);
+  kolekcja_dronow[1]->plyn(0,65,lista_przeszkod);
   lista_przeszkod.push_back(kolekcja_dronow[1]);
  
   Dron Trzeci(30.0,20.0,20.0);
@@ -171,10 +171,7 @@ int main() {
 	    std::cin>>stopnie;
 	    std::cout<<"plyn. Podaj odleglosc: ";	   
 	    std::cin>>odleglosc;
-	    //D.plyn(stopnie,odleglosc);//
-	    // Dron1.plyn(stopnie,odleglosc,lista_przeszkod);//
-	     D->plyn(stopnie,odleglosc,lista_przeszkod);
-	    
+	    D->plyn(stopnie,odleglosc,lista_przeszkod);
 	    break;
 	  }
 	case 'o':
@@ -185,9 +182,7 @@ int main() {
 	    std::cout<<"obrot. Podaj stopnie: ";
 	    std::cin>>stopnie;
 	    for(int i=0;i<ile;++i)
-	       {D->obrot(stopnie);}
-	      // {Dron1.obrot(stopnie);}
-	      
+	      {D->obrot(stopnie);}
 	    break;
 	  }
 	case 'm':

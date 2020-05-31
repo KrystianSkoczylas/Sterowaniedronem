@@ -74,12 +74,7 @@ void GraniastoslupSzesc::rysuj ()
 	 drawNS::Point3D(g7[0],g7[1],g7[2]), drawNS::Point3D(g8[0],g8[1],g8[2]), drawNS::Point3D(g9[0],g9[1],g9[2]), drawNS::Point3D(g10[0],g10[1],g10[2]), drawNS::Point3D(g11[0],g11[1],g11[2]), drawNS::Point3D(g12[0],g12[1],g12[2])	
 	  }},"red");
 }
-/*
-void GraniastoslupSzesc::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
-{
-  api=wskaznik;
-}
-*/
+
 void GraniastoslupSzesc::zmien_srodek (Wektor<double,3> nowy_srodek)
 {
   srodek[0]=nowy_srodek[0];

@@ -55,16 +55,3 @@ void Prostopadloscian::rysuj ()
        drawNS::Point3D(g5[0],g5[1],g5[2]), drawNS::Point3D(g6[0],g6[1],g6[2]), drawNS::Point3D(g7[0],g7[1],g7[2]), drawNS::Point3D(g8[0],g8[1],g8[2])	
 	  }},"green");
 }
-/*
-void Prostopadloscian::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
-{
-  api=wskaznik;
-}
-*/
- /*
-void Prostopadloscian::usun_prostopadloscian()
-{
-  if(indeks != -1)
-    api->erase_shape(indeks); 
-}
- */

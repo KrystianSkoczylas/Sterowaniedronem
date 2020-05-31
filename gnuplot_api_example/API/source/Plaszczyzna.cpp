@@ -49,9 +49,4 @@ indeks=api->draw_surface(vector<vector<Point3D> > {{
       drawNS::Point3D(g13[0],g13[1],g13[2]), drawNS::Point3D(g14[0],g14[1],g14[2]), drawNS::Point3D(g15[0],g15[1],g15[2]), drawNS::Point3D(g16[0],g16[1],g16[2])       
 	  }},"blue");
 }
-/*
-void Plaszczyzna::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
-{
-  api=wskaznik;
-}
-*/
+

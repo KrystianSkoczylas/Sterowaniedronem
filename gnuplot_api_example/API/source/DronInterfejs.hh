@@ -6,7 +6,6 @@
 #include "Macierz.hh"
 #include "MacierzRot.hh"
 #include "Dr3D_gnuplot_api.hh"
-//#include "Przeszkoda.hh"
 
 using std::vector;
 using drawNS::Point3D;
@@ -19,7 +18,6 @@ class DronInterfejs
 
 public:
   virtual void obrot (double stopnie)=0;
-  // virtual void plyn (double stopnie, double odleglosc)=0;
   //  virtual void plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_przeszkod)=0;
   virtual Wektor<double,3> dostan_srodek ()=0;
   virtual double dostan_Promien ()=0;

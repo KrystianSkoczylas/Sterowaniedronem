@@ -16,29 +16,54 @@ class Wektor {
    *Tablica o zadanym typie i rozmiarze jest przedstawieniem danego wektora.
    */
   TYP tab[ROZMIAR];
-
+  /*!
+   *\brief Ile istnieje wektorow
+   *
+   *Statyczne pole zawierajace inforamcje ile istnije aktulanie wektorow
+   */
   static int ile_istnieje;
+   /*!
+   *\brief Ile utworzono wektorow
+   *
+   *Statyczne pole zawierajace inforamcje ile uworzono w sumie wektorow
+   */
   static int ile_utworzono;
   
 public:
-  
+  /*!
+   *\brief Zwraca liczbe istniejacych wektorow
+   *
+   *return - Liczba calkowita istniejacych wektorow
+   */
   static int zwroc_istniejace() {return ile_istnieje;};
+   /*!
+   *\brief Zwraca liczbe usworzonych wektorow
+   *
+   *return - Liczba calkowita utworszonych wektorow
+   */
   static int zwroc_utworzone() {return ile_utworzono;};
-  
-  Wektor(const Wektor & nowy) { tab[0]=nowy.tab[0]; tab[1]=nowy.tab[1]; tab[2]=nowy.tab[2];
+   /*!
+   *\brief Konstruktor kopiujacy
+   *
+   *Zastapienie domyslnego konstrukora kopiujacego. Konstruktor przypisuje starym polom
+   *wektora nowe pola, oraz liczy liczbe utworzonych i stniejacych wektorow.
+   *\param[in] nowy - nowy wektor na ktory bedzie przekopiowany stary
+   */
+  Wektor(const Wektor & nowy) { for(int i=0;i<ROZMIAR;++i) {tab[i]=nowy.tab[i];}
     ile_istnieje++; ile_utworzono++; }
-  ~Wektor() {ile_istnieje--;}
-  
+   /*!
+   *\brief Dekonstruktor
+   *
+   *Zastopienie domyslnego dekonstruktora. Dekonstruktor zmniejsza liczbe istniejacych 
+   *wektorow, ale nie zmneijsz liczby utworzonych wektorow.
+   */
+  ~Wektor() {ile_istnieje--;} 
   /*!
    *\brief Konstruktor bezparametryczny wektora
    *
    *Konstruktor inicjalizuje wszystkie elemety wektora wartoscia 0.
    */
-  Wektor() {for(int i=0;i<ROZMIAR;++i) tab[i]=0; ile_istnieje++; ile_utworzono++; }
-
-  //konstruktor kopiujacy? uzywany?
-  //dekonstruktor ?
-  
+  Wektor() {for(int i=0;i<ROZMIAR;++i) tab[i]=0; ile_istnieje++; ile_utworzono++; } 
   /*!
    *\brief Przeciazenie nawiasow klamrowych
    *

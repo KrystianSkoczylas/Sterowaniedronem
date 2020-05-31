@@ -13,13 +13,10 @@ using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
-//class Plaszczyzna
+
 class Plaszczyzna :public Bryla
 {
 protected:
-  //std::shared_ptr<drawNS::Draw3DAPI> api;
-  //int indeks;
-  //Wektor<double,3> srodek;
   Wektor<double,3> v1;
   Wektor<double,3> v2;
   Wektor<double,3> v3;
@@ -52,14 +49,10 @@ protected:
   Wektor<double,3> g14;
   Wektor<double,3> g15;
   Wektor<double,3> g16;
-  //MacierzRot polozenie;
 public:
   Plaszczyzna (double a, double b, double c);
   Plaszczyzna () {}
-
   void rysuj () override;
-  //void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik) override;
-
 };
 
 #endif

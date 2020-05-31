@@ -1,5 +1,4 @@
 #include "Dno.hh"
-//#include "Plaszczyzna.hh"
 
 Dno::Dno (double a, double b, double c)
 {
@@ -40,7 +39,6 @@ Dno::Dno (double a, double b, double c)
 
 void Dno::rysuj ()
 {
-  // Plaszczyzna::rysuj();
   indeks=api->draw_surface(vector<vector<Point3D> > {{
       drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2])
 	  },{
@@ -57,22 +55,11 @@ void Dno::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
    Plaszczyzna::ustawwskaznik(wskaznik);
 }
 
-
 bool Dno::czy_kolizja (DronInterfejs* D) 
 {
-  //std::cout<<"D.srodek[2]"<<D.srodek[2];
-  //std::cout<<"g1[2]"<<g1[2];
-  //std::cout<<"D.Promien"<<D.Promien;
-  
   if(D->dostan_srodek()[2]< (g1[2] + D->dostan_Promien()) )
     { std::cout<<"Kolizja z Dno"<<std::endl; return 1; } 
   else
     return 0;
-  
-  
-  //g1+D.srodek;
-  // Wektor<double,3> srodek_drona;
-  //srodek_drona=Dron::dostan_srodek();
-  //std::cout<<"Dno::czy_kolizja";
 }
 

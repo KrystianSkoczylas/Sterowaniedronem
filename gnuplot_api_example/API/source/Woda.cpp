@@ -39,7 +39,6 @@ Woda::Woda (double a, double b, double c)
 
 void Woda::rysuj ()
 {
-  // Plaszczyzna::rysuj();
   indeks=api->draw_surface(vector<vector<Point3D> > {{
       drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2])
 	  },{
