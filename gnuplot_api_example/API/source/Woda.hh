@@ -9,10 +9,9 @@
 
 class Woda :public Plaszczyzna, public Przeszkoda
 {
-
+  Woda() {}
 public:
   Woda (double a, double b, double c);
-  Woda() {}
   
   void rysuj ();
   void ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik);

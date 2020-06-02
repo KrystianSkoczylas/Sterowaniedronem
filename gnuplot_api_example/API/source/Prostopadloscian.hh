@@ -33,13 +33,13 @@ protected:
   Wektor<double,3> g6;
   Wektor<double,3> g7;
   Wektor<double,3> g8;
+  Prostopadloscian () {}
 public:
   Prostopadloscian (double a, double b, double c);
-  Prostopadloscian () {}
   
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);
-  void rysuj () override;
+  void rysuj ()  override;
 };
 
 #endif

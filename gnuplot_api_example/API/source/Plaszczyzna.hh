@@ -49,9 +49,9 @@ protected:
   Wektor<double,3> g14;
   Wektor<double,3> g15;
   Wektor<double,3> g16;
+  Plaszczyzna () {}
 public:
   Plaszczyzna (double a, double b, double c);
-  Plaszczyzna () {}
   void rysuj () override;
 };
 

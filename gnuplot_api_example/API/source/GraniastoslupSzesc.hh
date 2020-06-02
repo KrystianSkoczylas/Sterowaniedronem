@@ -43,9 +43,9 @@ protected:
   Wektor<double,3> g10;
   Wektor<double,3> g11;
   Wektor<double,3> g12;
+  GraniastoslupSzesc () {}
 public:
   GraniastoslupSzesc (double a, double b);
-  GraniastoslupSzesc () {}
   
   void przesun (Wektor<double,3> przesuniecie);
   void obroc (MacierzRot obrocenie);

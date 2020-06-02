@@ -2,7 +2,6 @@
 
 Dron::Dron (double a, double b, double c)
 {
-  indeks =0;
   v1[0]=-a/2; v1[1]=b/2; v1[2]=-c/2;
   v2[0]=a/2; v2[1]=b/2; v2[2]=-c/2;
   v3[0]=a/2; v3[1]=-b/2; v3[2]=-c/2;
@@ -31,7 +30,7 @@ Dron::Dron (double a, double b, double c)
 
 void Dron::obrot (double stopnie)
 {
-  for(double i=0;i<=stopnie;++i)
+  for(double i=0;i<stopnie;++i)
     { 
       MacierzRot R(1,'z');
       obroc(R);
@@ -39,9 +38,10 @@ void Dron::obrot (double stopnie)
       P.zmien_srodek(srodek + (polozenie * Bazowe_polozenie_srubyP));
       L.zmien_orientacje(polozenie * Bazowa_orientacja_srub);
       P.zmien_orientacje(polozenie * Bazowa_orientacja_srub);
-      MacierzRot Krecenie(15,'z');
-      L.obroc(Krecenie);
-      P.obroc(Krecenie);
+      MacierzRot Krecenie(3,'z');
+      Macierz_krecenia_srub = Macierz_krecenia_srub * Krecenie;
+      L.obroc(Macierz_krecenia_srub);
+      P.obroc(Macierz_krecenia_srub);
       rysuj();
     }
 }
@@ -98,8 +98,6 @@ void Dron::ustawwskaznik (std::shared_ptr<drawNS::Draw3DAPI> wskaznik)
 
 void Dron::rysuj()
 {
-  if(indeks != -1 )
-  api->erase_shape(indeks);
   Prostopadloscian::rysuj();
   L.rysuj();
   P.rysuj();
@@ -113,12 +111,12 @@ void Dron::ustaw_bazowe_polozenie_orientacje_srub ()
   Bazowe_polozenie_srubyP[0]=-20; Bazowe_polozenie_srubyP[1]=-10;  Bazowe_polozenie_srubyP[2]=0;
 }
 
-Wektor<double,3> Dron::dostan_srodek () 
+Wektor<double,3> Dron::dostan_srodek () const 
 {
   return srodek;
 }
 
-double Dron::dostan_Promien ()
+double Dron::dostan_Promien () const
 {
   return Promien;
 }

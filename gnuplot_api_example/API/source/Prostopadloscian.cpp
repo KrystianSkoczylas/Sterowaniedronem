@@ -2,7 +2,6 @@
 
 Prostopadloscian::Prostopadloscian (double a, double b, double c)
 {
-  indeks=0;
   v1[0]=-a/2; v1[1]=b/2; v1[2]=-c/2;
   v2[0]=a/2; v2[1]=b/2; v2[2]=-c/2;
   v3[0]=a/2; v3[1]=-b/2; v3[2]=-c/2;
@@ -49,7 +48,9 @@ void Prostopadloscian::obroc (MacierzRot obrocenie)
 
 void Prostopadloscian::rysuj ()
 {
- indeks=api->draw_polyhedron(vector<vector<Point3D> > {{
+  if(indeks != -1 )
+    api->erase_shape(indeks);
+  indeks=api->draw_polyhedron(vector<vector<Point3D> > {{
        drawNS::Point3D(g1[0],g1[1],g1[2]), drawNS::Point3D(g2[0],g2[1],g2[2]), drawNS::Point3D(g3[0],g3[1],g3[2]), drawNS::Point3D(g4[0],g4[1],g4[2])
       },{
        drawNS::Point3D(g5[0],g5[1],g5[2]), drawNS::Point3D(g6[0],g6[1],g6[2]), drawNS::Point3D(g7[0],g7[1],g7[2]), drawNS::Point3D(g8[0],g8[1],g8[2])	

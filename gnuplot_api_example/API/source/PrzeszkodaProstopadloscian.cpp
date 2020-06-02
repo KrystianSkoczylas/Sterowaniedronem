@@ -2,7 +2,6 @@
 
 PrzeszkodaProstopadloscian::PrzeszkodaProstopadloscian(double a, double b, double c)
 {
-  indeks=0;
   v1[0]=-a/2; v1[1]=b/2; v1[2]=-c/2;
   v2[0]=a/2; v2[1]=b/2; v2[2]=-c/2;
   v3[0]=a/2; v3[1]=-b/2; v3[2]=-c/2;

@@ -61,6 +61,13 @@ class Dron :public Prostopadloscian, public DronInterfejs, public Przeszkoda
    *kolizji drona z dana przeszkoda.
    */
   double Promien;
+  /*!
+   *\brief Macierz do krecenia srubami
+   *
+   *Pole zawiera macierz rotacji ktora umozliwia krecenie sie srub podczas obrotu
+   *drona. Uwzglednia ona wczesniejsze obroty samych srub.
+   */
+  MacierzRot Macierz_krecenia_srub;
 public:
   /*!
    *\brief Lewa sruba Drona
@@ -91,7 +98,7 @@ public:
    *rysowany na nowo.
    *\param[in] stopnie - Liczba stopni o jaka ma sie obrocic dron.
    */
-  void obrot (double stopnie);
+  void obrot (double stopnie) override ;
   /*!
    *\brief Powoduje ruch drona do przodu z opadaniem lub wznoszeniem
    *
@@ -160,7 +167,7 @@ public:
    *sie w ten sposob do srodka drona.
    *return Zwraca srodek drona bedacy wektorem
    */
-  Wektor<double,3> dostan_srodek ()override ;
+  Wektor<double,3> dostan_srodek () const override ;
     /*!
    *\brief Zwraca dlugosc promienia drona
    *
@@ -170,7 +177,7 @@ public:
    *sposob do wartosci dlugosci promienia drona.
    *return Zwraca promien drona bedacy liczba typu double
    */
-  double dostan_Promien ()override ;
+  double dostan_Promien () const override ;
     /*!
    *\brief Czy zaszla kolizja z innym dornem
    *

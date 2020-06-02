@@ -2,7 +2,6 @@
 
 GraniastoslupSzesc::GraniastoslupSzesc (double a, double b)
 {
-  indeks=0;
   v1[0]=-a/2;   v1[1]=a*T;    v1[2]=-b/2;
   v2[0]=a/2;    v2[1]=a*T;    v2[2]=-b/2;
   v3[0]=a;      v3[1]=0;      v3[2]=-b/2;

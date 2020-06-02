@@ -15,16 +15,15 @@ using std::endl;
 
 class Bryla
 {
-
 protected:
   std::shared_ptr<drawNS::Draw3DAPI> api;
-  int indeks;
+  int indeks = -1;
   MacierzRot polozenie;
 
   static int ile_istnieje;
   static int ile_utworzono;
-public:
   Bryla() {indeks=-1; ile_istnieje++; ile_utworzono++;}
+public:
   Bryla(std::shared_ptr<drawNS::Draw3DAPI> wskaznik) { api=wskaznik; ile_istnieje++; ile_utworzono++;}
   ~Bryla() {ile_istnieje--;}
   

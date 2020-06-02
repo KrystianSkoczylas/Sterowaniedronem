@@ -154,14 +154,14 @@ TYP Wektor<TYP,ROZMIAR>::dlugosc() const
   return sqrt(wyn); 
 }
 /*!
- *Metoda statyczna licząca istniejace wektory
+ *Pole statyczne liczące istniejace wektory
  *
  *Poczatkowo istnieje 0 wektorow
  */
 template <class TYP, int ROZMIAR>
 int Wektor<TYP,ROZMIAR>::ile_istnieje(0);
 /*!
- *Metoda statyczna licząca utworzone wektory
+ *Pole statyczne liczące utworzone wektory
  *
  *Poczatkowo uworzono 0 wektorow
  */

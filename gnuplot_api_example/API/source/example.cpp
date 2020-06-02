@@ -112,7 +112,7 @@ int main() {
 
   
   char ktory;
-  cout<<"Wybierz Drona do sterowania"<<endl;
+  cout<<"Wybierz Drona do sterowania (domyslnie Dron 1)"<<endl;
   cout<<"1- Dron 1(Dlugi)";
   cout<<"Polozenie Drona "<<kolekcja_dronow[0]->dostan_srodek();
   cout<<endl;

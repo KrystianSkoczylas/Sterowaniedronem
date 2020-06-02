@@ -13,14 +13,14 @@ using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
 
+
 class DronInterfejs
 {
 
 public:
   virtual void obrot (double stopnie)=0;
-  //  virtual void plyn (double stopnie, double odleglosc, std::vector<Przeszkoda*> l_przeszkod)=0;
-  virtual Wektor<double,3> dostan_srodek ()=0;
-  virtual double dostan_Promien ()=0;
+  virtual Wektor<double,3> dostan_srodek () const =0;
+  virtual double dostan_Promien () const =0;
 
 };
 
